@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LifeSync</title>
+    <link rel="stylesheet" href="./Digital Dreams/landing page/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="home">
+      <!-- Navbar -->
+      <nav class="navbar">
+        <a class="navbar-brand" href="#">LifeSync</a>
+
+        <!-- Hamburger Menu -->
+        <button
+          class="navbar-toggler"
+          id="menu-toggle"
+          aria-label="Toggle navigation"
+        >
+          <div class="animated-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+
+        <!-- Nav Links -->
+        <div class="navbar-menu" id="navbar-menu">
+          <div class="nav-links">
+            <a href="#about" class="nav-link">About</a>
+            <a href="#features" class="nav-link">Features</a>
+            <a href="#location" class="nav-link">Location</a>
+            <a href="#contact" class="nav-link">Contact</a>
+          </div>
+        </div>
+
+        <!-- Profile Icon + Dropdown -->
+        <div class="profile-dropdown">
+          <a class="profile-toggle" href="#" id="profile-toggle">
+            <img
+              src="./Digital Dreams/landing page/assets/saurav profile.jpeg"
+              alt="Profile"
+              class="profile-img"
+            />
+          </a>
+          <ul class="dropdown-menu" id="profile-menu">
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="#">Logout</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Hero Section -->
+      <section class="hero">
+        <h1>LifeSync</h1>
+        <p class="lead">A Real-Time Companion App for Senior Citizens</p>
+        <p>
+          To bring dignity, safety, and seamless communication into the lives of
+          senior citizens, using intuitive and accessible technology.
+        </p>
+        <a href="#contact" class="btn btn-primary">Get in Touch</a>
+      </section>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="text-center">
+      <h2>About LifeSync</h2>
+      <p>
+        LifeSync is a real-time companion app designed especially for senior
+        citizens who live alone. With a focus on safety, health, and emotional
+        connection, LifeSync bridges the gap between independence and support.
+        From instant SOS alerts to seamless video calls and health tracking, it
+        ensures peace of mind for both elders and their families. Our mission is
+        to empower seniors to live confidently while staying connected with
+        their loved ones and caregivers.
+      </p>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="text-center">
+      <h2>Features</h2>
+      <div class="features-container">
+        <div class="feature-box">
+          <div class="icon">
+            <img
+              class="feature-img"
+              src="./Digital Dreams/landing page/assets/video-solid.svg"
+              alt="video-calling"
+            />
+          </div>
+          <h5>Video Calling</h5>
+          <p>
+            Easy-to-use video call feature to connect with caregivers & family
+            via Jitsi.
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <div class="icon">
+            <img
+              class="feature-img"
+              src="./Digital Dreams/landing page/assets/sos.svg"
+              alt="sos"
+            />
+          </div>
+          <h5>Emergency SOS</h5>
+          <p>
+            One Tap emergency alert system that instantly notifies caregivers.
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <div class="icon">
+            <img
+              class="feature-img"
+              src="./Digital Dreams/landing page/assets/heart-pulse-solid.svg"
+              alt="health-monitoring"
+            />
+          </div>
+          <h5>Health Monitoring</h5>
+          <p>
+            Integrate vitals like heart rate & oxygen using IoT for real-time
+            tracking.
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <a
+            href="./Digital Dreams/landing page/medical emergence/medical emergence.html"
+            class="feature-link"
+          >
+            <div class="icon">
+              <img
+                class="feature-img"
+                src="./Digital Dreams/landing page/assets/kit-medical-solid.svg"
+                alt="medical-emergencies"
+              />
+            </div>
+            <h5>Medical emergencies</h5>
+            <p>
+              Integrate vitals like heart rate & oxygen using IoT for real-time
+              tracking.
+            </p>
+          </a>
+        </div>
+
+        <div class="feature-box">
+          <div class="icon">
+            <img
+              class="feature-img"
+              src="./Digital Dreams/landing page/assets/user-doctor-solid.svg"
+              alt="Doctor"
+            />
+          </div>
+          <h5>Doctor/medicine</h5>
+          <p>
+            Integrate vitals like heart rate & oxygen using IoT for real-time
+            tracking.
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <div class="icon">
+            <img
+              class="feature-img"
+              src="./Digital Dreams/landing page/assets/government-building.png"
+              alt="Government"
+            />
+          </div>
+          <h5>Government Schemes/NGOs</h5>
+          <p>
+            Integrate vitals like heart rate & oxygen using IoT for real-time
+            tracking.
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <div class="icon">
+            <img
+              class="feature-img"
+              src="./Digital Dreams/landing page/assets/dial.png"
+              alt="Mood-Detector"
+            />
+          </div>
+          <h5>Mood-Detector</h5>
+          <p>
+            Integrate vitals like heart rate & oxygen using IoT for real-time
+            tracking.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="text-center">
+      <div class="container">
+        <h2>Live Location on Map</h2>
+        <p id="locationStatus">Fetching your live location...</p>
+        <div id="map"></div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="text-center">
+      <div class="container">
+        <h2>Contact Us</h2>
+        <form class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Your Name"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="email"
+                class="form-control"
+                placeholder="Your Email"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <textarea
+              class="form-control"
+              placeholder="Write your message here..."
+              required
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- AI Chatbot Assistant -->
+    <div id="ai-assistant">
+      <div id="chat-toggle">🤖</div>
+      <div id="chat-box">
+        <div id="chat-messages"></div>
+        <div class="chat-input-area">
+          <input type="text" id="user-input" placeholder="Say something..." />
+          <button id="send-btn">➤</button>
+          <button id="mic-btn">🎙️</button>
+        </div>
+      </div>
+    </div>
+
+    <footer>© 2025 LifeSync. All Rights Reserved.</footer>
+
+    <script src="./Digital Dreams/landing page/script.js"></script>
+    <script
+      async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbjmy23jpyAil7JBpIyDcfHJHRbOpGfQQ"
+    ></script>
+  </body>
+</html>
