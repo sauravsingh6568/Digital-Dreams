@@ -8,13 +8,14 @@
   <style>
     body {
       font-family: "Segoe UI", sans-serif;
-      background-color: transparent;
+      background-color: #f9f6ff;
       color: #121530;
     }
 
     .navbar {
       padding: 1rem 2rem;
-      box-shadow: 0 4px 12px rgba(106, 99, 99, 0.04);
+      background-color: #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
     }
     .navbar-brand {
       font-weight: bold;
@@ -22,7 +23,7 @@
       font-size: 1.6rem;
     }
     .nav-link {
-      color: #c8c6d3;
+      color: #1b1247;
       font-weight: 500;
       padding: 0.5rem 1rem;
       transition: color 0.3s ease, background-color 0.3s ease;
@@ -30,7 +31,7 @@
     .nav-link:hover,
     .nav-link:focus {
       color: #fff;
-      background-color: #3f49b1;
+      background-color: #ff6250;
       border-radius: 8px;
     }
     .navbar-toggler {
@@ -50,7 +51,7 @@
       font-size: 1.1rem;
       margin-bottom: 1.5rem;
     }
-    .hero-img {
+   .hero-img {
     max-width: 100%;
     position: relative;
     top: 0px;
@@ -104,8 +105,13 @@
     }
 
     .cta {
-      background: linear-gradient(to bottom right, #e5d7fb, #fdf1f5);
+      background: linear-gradient(355deg, #cf328f, #524ce7);
+
       padding: 4rem 2rem;
+    }
+
+    .cta h2 {
+      color: white; /* Set text color to white */
     }
 
     .footer {
@@ -135,6 +141,63 @@
     .btn.w-100:hover {
       background-color: #9500ff; /* Darker shade for hover effect */
     }
+
+    .feature-box {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5); /* Darker shadow */
+      transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
+    }
+
+    .feature-box:hover {
+      box-shadow: 0 15px 60px rgba(0, 0, 0, 0.6); /* Even darker shadow on hover */
+      transform: translateY(-8px); /* Slight lift on hover */
+    }
+    
+ 
+  .feature-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  }
+  #features h2 {
+    font-size: 2rem;
+    color: rgb(14, 1, 1);
+  }
+  
+  .feature-box {
+    background: rgb(255, 255, 255);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: #0c0c0c;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+  }
+  
+  .feature-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 70px rgba(14, 0, 0, 0.07);
+  }
+  
+  .feature-box .icon i {
+    color: #6c5ce7;
+  }
+  .video-img {
+    width: 50px;
+  }
+  
+  .feature-box h5 {
+    font-weight: bold;
+    margin-top: 15px;
+    color: #2d3436;
+  }
+  
+  .feature-box p {
+    font-size: 0.95rem;
+    color: #636e72;
+    margin-top: 10px;
+  }
+  
   </style>
 </head>
 <body>
@@ -150,7 +213,6 @@
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="#">Features</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">How it Works</a></li>
         <li class="nav-item"><a class="nav-link" href="#">Family Dashboard</a></li>
       </ul>
     </div>
@@ -161,7 +223,10 @@
 <section class="hero text-white">
   <div class="container">
     <div class="row align-items-center gy-4">
-      <div class="col-md-6">
+      <div class="col-md-6 order-md-1 text-center">
+        <img src="../Digital Dreams/landing page/assets/elder.png" alt="Elder with AI" class="hero-img" />
+      </div>
+      <div class="col-md-6 order-md-2">
         <h1>A Smart Companion for Your Loved Ones</h1>
         <p>Real-time care, connection, and comfort — in just one tap.</p>
         <div>
@@ -169,60 +234,85 @@
           <a href="#" class="btn btn-secondary-custom">Sign Up For Free</a>
         </div>
       </div>
-      <div class="col-md-6 text-center">
-        <img src="../Digital Dreams/landing page/assets/elder.png" alt="Elder with AI" class="hero-img" />
-      </div>
     </div>
   </div>
 </section>
 
 <!-- Features Section -->
-<section class="py-5">
-  <div class="container text-center">
-    <h2 class="mb-5 text-dark">Features</h2>
-    <div class="row g-4">
-      <div class="col-sm-6 col-lg-4">
-        <div class="feature-item">
-          <h5><span class="feature-icon">🧠</span> Grook-Style Chatbot</h5>
-          <p>Talks bōē ʃ rohd, cheers them ʊp rhɩmə.</p>
-        </div>
+<!-- Modern Features Section (new one with emojis) -->
+<section id="features" class="py-5 text-center">
+  <h2 class="fw-bold mb-4">Features</h2>
+  <div class="container">
+      <div class="row g-4 justify-content-center">
+          <div class="col-md-3">
+              <div class="feature-box p-4 shadow-sm">
+                  <div class="icon mb-3">
+                      <img class="video-img" src="/landing page/assets/video-solid.svg" alt="video-calling" />
+                  </div>
+                  <h5>Video Calling</h5>
+                  <p>Easy-to-use video call feature to contrast with caregivers & family via Jitsi.</p>
+              </div>
+          </div>
+          <div class="col-md-3">
+              <div class="feature-box p-4 shadow-sm">
+                  <div class="icon mb-3">
+                      <img class="video-img" src="/landing page/assets/sos.svg" alt="video-calling" />
+                  </div>
+                  <h5>Emergency SOS</h5>
+                  <p>One Tap emergency alert system thanistanty notifies caregivers.</p>
+              </div>
+          </div>
+          <div class="col-md-3">
+              <div class="feature-box p-4 shadow-sm">
+                  <div class="icon mb-3">
+                      <img class="video-img" src="/landing page/assets/heart-pulse-solid.svg"
+                          alt="video-calling" />
+                  </div>
+                  <h5>Health Monitoring</h5>
+                  <p>Integrate vitals like heart rate & oxygen using IoT for real-time tracking.</p>
+              </div>
+          </div>
+          <div class="col-md-3">
+              <a href="/landing page/medical emergence/medical emergence.html" style="text-decoration: none;">
+                  <div class="feature-box p-4 shadow-sm">
+                      <div class="icon mb-3">
+                          <img class="video-img" src="/landing page/assets/kit-medical-solid.svg"
+                              alt="video-calling" />
+                      </div>
+                      <h5>Medical emergencies </h5>
+                      <p>Integrate vitals like heart rate & oxygen using IoT for real-time tracking.</p>
+                  </div>
+          </div>
+          </a>
+          <div class="col-md-3">
+              <div class="feature-box p-4 shadow-sm">
+                  <div class="icon mb-3">
+                      <img class="video-img" src="/landing page/assets/user-doctor-solid.svg" alt="Doctor" />
+                  </div>
+                  <h5>Doctor/medicine </h5>
+                  <p>Integrate vitals like heart rate & oxygen using IoT for real-time tracking.</p>
+              </div>
+          </div>
+          <div class="col-md-3">
+              <div class="feature-box p-4 shadow-sm">
+                  <div class="icon mb-3">
+                      <img class="video-img" src="/landing page/assets/government-building.png"
+                          alt="Government" />
+                  </div>
+                  <h5>Government Schemes/NGOs </h5>
+                  <p>Integrate vitals like heart rate & oxygen using IoT for real-time tracking.</p>
+              </div>
+          </div>
+          <div class="col-md-3">
+              <div class="feature-box p-4 shadow-sm">
+                  <div class="icon mb-3">
+                      <img class="video-img" src="/landing page/assets/dial.png" alt="Mood-Detector" />
+                  </div>
+                  <h5>Mood-Detector </h5>
+                  <p>Integrate vitals like heart rate & oxygen using IoT for real-time tracking.</p>
+              </div>
+          </div>
       </div>
-      <div class="col-sm-6 col-lg-4">
-        <div class="feature-item">
-          <h5><span class="feature-icon">❤</span> Memory Lane Journal</h5>
-          <p>Talks like friends, brings back memories.</p>
-        </div>
-      </div>
-      <div class="col-sm-6 col-lg-4">
-        <div class="feature-item">
-          <h5><span class="feature-icon">⏰</span> Routine Builder</h5>
-          <p>Gentle reminders for warmth, meds, and activities.</p>
-        </div>
-      </div>
-      <div class="col-sm-6 col-lg-4">
-        <div class="feature-item">
-          <h5><span class="feature-icon">🤝</span> Community Connect</h5>
-          <p>Meet volunteers nearby to help or talk.</p>
-        </div>
-      </div>
-      <div class="col-sm-6 col-lg-4">
-        <div class="feature-item">
-          <h5><span class="feature-icon">🎵</span> Mood Music Therapy</h5>
-          <p>Voice-detected music for peace of mind.</p>
-        </div>
-      </div>
-      <div class="col-sm-6 col-lg-4">
-        <div class="feature-item">
-          <h5><span class="feature-icon">📹</span> Live Video Window</h5>
-          <p>No switching apps. Stay connected always.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="quote mt-5 mx-auto" style="max-width: 600px;">
-      “Greet yourself enchanting with love. Your cherished Self: realise.It.” — <strong>Bhagavad Gita</strong><br/>
-      <small>Your data is safe. No ads. No spam.</small>
-    </div>
   </div>
 </section>
 
