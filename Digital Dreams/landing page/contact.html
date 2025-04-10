@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - LifeSync</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+     
+      body {
+        margin: 0;
+        padding: 0;
+        background: white;
+      }
+
+      .gradient-background {
+        background: linear-gradient(355deg, #cf328f, #524ce7);
+        color: white;
+        margin: 0;
+        padding: 0;
+      }
+
+    
+      .home {
+        color: white;
+        margin: 0;
+        padding: 0;
+      }
+
+     
+      .contact-hero {
+        color: white;
+        padding: 80px 20px;
+        text-align: center;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        margin-top: 0;
+      }
+
+      .contact-hero h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      .contact-hero p {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto 1.5rem;
+      }
+
+      .contact-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 4rem 5%;
+      }
+
+      .contact-info {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .contact-info h3 {
+        color: #524ce7;
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .contact-info p {
+        margin-bottom: 1rem;
+        color: #555;
+      }
+
+      .contact-card {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .contact-icon {
+        background: linear-gradient(355deg, #cf328f, #524ce7);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+      }
+
+      .contact-icon i {
+        color: white;
+        font-size: 20px;
+      }
+
+      .contact-card .details {
+        flex: 1;
+      }
+
+      .contact-card h4 {
+        margin: 0;
+        color: #333;
+      }
+
+      .contact-card p {
+        margin: 5px 0 0;
+      }
+
+      .contact-form-container {
+        flex: 2;
+        min-width: 300px;
+        background: #fff;
+        padding: 30px;
+        border-radius: 16px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .contact-form-container h3 {
+        color: #524ce7;
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .form-input {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-input label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #333;
+      }
+
+      .form-input input,
+      .form-input textarea,
+      .form-input select {
+        width: 100%;
+        padding: 12px 16px;
+        border: 1px solid #dfe6e9;
+        border-radius: 12px;
+        font-family: "Inter", sans-serif;
+        font-size: 1rem;
+      }
+
+      .form-input textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      .contact-submit-btn {
+        background: linear-gradient(355deg, #cf328f, #524ce7);
+        color: white;
+        border: none;
+        border-radius: 14px;
+        padding: 14px 30px;
+        font-weight: 500;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-block;
+      }
+
+      .contact-submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .social-links a {
+        width: 40px;
+        height: 40px;
+        background: #f1f2f6;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        text-decoration: none;
+      }
+
+      .social-links a:hover {
+        background: linear-gradient(355deg, #cf328f, #524ce7);
+      }
+
+      .social-links a i {
+        font-size: 20px;
+        color: #524ce7;
+      }
+
+      .social-links a:hover i {
+        color: white;
+      }
+
+      /* Media Queries */
+      @media (max-width: 768px) {
+        .contact-container {
+          flex-direction: column;
+        }
+
+        .contact-hero h1 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+  
+    <div class="gradient-background">
+      <!-- Navbar -->
+      <nav class="navbar">
+        <a class="navbar-brand" href="index.html">LifeSync</a>
+
+        <!-- Hamburger Menu -->
+        <button
+          class="navbar-toggler"
+          id="menu-toggle"
+          aria-label="Toggle navigation"
+        >
+          <div class="animated-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+
+        <!-- Nav Links -->
+        <div class="navbar-menu" id="navbar-menu">
+          <div class="nav-links">
+            <a href="index.html#about" class="nav-link">About</a>
+            <a href="index.html#features" class="nav-link">Features</a>
+            <a href="#contact" class="nav-link">Contact</a>
+          </div>
+        </div>
+
+        <!-- Profile Icon + Dropdown -->
+        <div class="profile-dropdown">
+          <ul class="dropdown-menu" id="profile-menu">
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="#">Logout</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Contact Hero Section -->
+      <section class="contact-hero">
+        <h1>Get in Touch</h1>
+        <p>
+          Have questions about LifeSync? Need assistance with the app? Or
+          perhaps you'd like to partner with us? We're here to help!
+        </p>
+      </section>
+    </div>
+
+    <!-- Contact Content Section -->
+    <div class="contact-container" id="contact">
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <h3>Contact Information</h3>
+        <p>
+          Reach out to our dedicated team for inquiries, support, or partnership
+          opportunities.
+        </p>
+
+        <!-- Phone -->
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-phone"></i>
+          </div>
+          <div class="details">
+            <h4>Phone</h4>
+            <p>+1 (555) 123-4567</p>
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="details">
+            <h4>Email</h4>
+            <p>contact@lifesync.com</p>
+          </div>
+        </div>
+
+        <!-- Address -->
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="details">
+            <h4>Address</h4>
+            <p>123 Innovation Drive, Tech Park<br />San Francisco, CA 94103</p>
+          </div>
+        </div>
+
+        <!-- Social Links -->
+        <h3>Connect With Us</h3>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form-container">
+        <h3>Send Us a Message</h3>
+        <form id="contactForm">
+          <div class="form-input">
+            <label for="name">Your Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Enter your full name"
+              required
+            />
+          </div>
+
+          <div class="form-input">
+            <label for="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email address"
+              required
+            />
+          </div>
+
+          <div class="form-input">
+            <label for="phone">Phone Number (Optional)</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="Enter your phone number"
+            />
+          </div>
+
+          <div class="form-input">
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject" required>
+              <option value="" disabled selected>Select a subject</option>
+              <option value="general">General Inquiry</option>
+              <option value="support">Technical Support</option>
+              <option value="partnership">Partnership Opportunity</option>
+              <option value="feedback">Feedback</option>
+            </select>
+          </div>
+
+          <div class="form-input">
+            <label for="message">Your Message</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Write your message here..."
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="contact-submit-btn">Send Message</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>© 2025 LifeSync. All Rights Reserved.</footer>
+
+    <!-- JavaScript for menu toggle -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Mobile menu toggle
+        const menuToggle = document.getElementById("menu-toggle");
+        const navbarMenu = document.getElementById("navbar-menu");
+        const animatedIcon = document.querySelector(".animated-icon");
+
+        menuToggle.addEventListener("click", function () {
+          navbarMenu.classList.toggle("show");
+          animatedIcon.classList.toggle("open");
+        });
+
+        // Form submission handler
+        const contactForm = document.getElementById("contactForm");
+
+        contactForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+        
+          // For demonstration purposes,  just show an alert
+          alert("Thank you for your message! We'll get back to you soon.");
+          contactForm.reset();
+        });
+      });
+    </script>
+  </body>
+</html>
