@@ -36,40 +36,15 @@
 
         <p class="forgot"><a href="#">Forgot password?</a></p>
 
-      
         <p id="successMessage" style="display: none">
           Login successful! Click
-          <a href="/life sync app/firstpage.html" id="directLink">here</a> if
-          you're not redirected automatically.
+          <a href="/life%20sync%20app/dash.html" id="directLink">here</a>
+          if you're not redirected automatically.
         </p>
       </form>
     </div>
 
     <script src="script.js"></script>
-    <script>
-     
-      function showDirectLink() {
-        document.getElementById("successMessage").style.display = "block";
-      }
-
-      if (document.getElementById("loginForm")) {
-        document
-          .getElementById("loginForm")
-          .addEventListener("submit", function (e) {
-            const email = document.getElementById("email").value;
-            const userData = localStorage.getItem(email);
-
-            if (userData) {
-              const user = JSON.parse(userData);
-              const password = document.getElementById("password").value;
-
-              if (user.password === password) {
-             
-                setTimeout(showDirectLink, 2000);
-              }
-            }
-          });
-      }
-    </script>
+    <!-- Removed conflicting inline script -->
   </body>
 </html>

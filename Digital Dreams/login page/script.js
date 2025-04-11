@@ -1,8 +1,48 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Signup Handler
+  const API_URL = "http://127.0.0.1:8000/auth";
+
+  // LOGIN
+  const loginForm = document.getElementById("loginForm");
+  if (loginForm) {
+    loginForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      if (!email || !password) {
+        alert("Please fill in all fields");
+        return;
+      }
+
+      try {
+        const response = await fetch(`${API_URL}/login/`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username: email, password }),
+        });
+
+        const data = await response.json();
+        console.log("Login response:", response.status, data);
+
+        if (response.ok) {
+          localStorage.setItem("loggedInUser", email);
+          // ✅ Match old behavior
+          window.location.href = "/life%20sync%20app/dash.html";
+        } else {
+          alert(data.error || "Login failed.");
+        }
+      } catch (err) {
+        console.error("Login error:", err);
+        alert("Server error. Try again later.");
+      }
+    });
+  }
+
+  // SIGNUP
   const signupForm = document.getElementById("signupForm");
   if (signupForm) {
-    signupForm.addEventListener("submit", function (e) {
+    signupForm.addEventListener("submit", async function (e) {
       e.preventDefault();
 
       const fullName = document.getElementById("fullName").value;
@@ -11,62 +51,39 @@ document.addEventListener("DOMContentLoaded", function () {
       const mobile = document.getElementById("mobile").value;
       const password = document.getElementById("password").value;
 
-      // Validate inputs
       if (!fullName || !dob || !email || !mobile || !password) {
         alert("Please fill in all fields");
         return;
       }
 
-      // Save user data in localStorage
-      const user = {
-        fullName,
-        dob,
-        email,
-        mobile,
-        password,
-      };
+      try {
+        const response = await fetch(`${API_URL}/signup/`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            username: email,
+            password,
+            full_name: fullName,
+            dob,
+            mobile,
+          }),
+        });
 
-      localStorage.setItem(email, JSON.stringify(user));
+        const data = await response.json();
+        console.log("Signup response:", response.status, data);
 
-      alert("Registration successful! You can now log in.");
-      window.location.href = "login.html";
-    });
-  }
-
-  // Login Handler
-  const loginForm = document.getElementById("loginForm");
-  if (loginForm) {
-    loginForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-
-      // Validate inputs
-      if (!email || !password) {
-        alert("Please fill in all fields");
-        return;
-      }
-
-      const userData = localStorage.getItem(email);
-
-      if (userData) {
-        const user = JSON.parse(userData);
-
-        if (user.password === password) {
-          alert("Login successful!");
-          localStorage.setItem("loggedInUser", email);
-
-          window.location.href = "/life%20sync%20app/dash.html";
+        if (response.ok) {
+          alert("Signup successful! You can now log in.");
+          window.location.href = "login.html";
         } else {
-          alert("Incorrect password. Please try again.");
+          alert(data.error || "Signup failed.");
         }
-      } else {
-        alert("No account found with this email. Please sign up.");
+      } catch (err) {
+        console.error("Signup error:", err);
+        alert("Server error. Try again later.");
       }
     });
   }
 
-  // Debug output
   console.log("Script loaded successfully");
 });
