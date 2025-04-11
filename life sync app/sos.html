@@ -1,65 +1,181 @@
-<div class="header">SOS Call</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LifeSync – Elder SOS</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #7f4fff, #ff6ec4);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-<div class="sos-section">
-  <p>If you're in an emergency, press the button below to send an alert to your emergency contacts.</p>
+    h1 {
+      font-size: 2.5rem;
+      margin-top: 40px;
+    }
 
-  <button id="sosButton" class="sos-btn">🚨 Send SOS Alert</button>
+    p.description {
+      max-width: 500px;
+      text-align: center;
+      margin-top: 10px;
+      font-size: 1.1rem;
+    }
 
-  <div id="sosStatus" class="sos-status hidden"></div>
-</div>
+    .sos-box {
+      background: #ff4f5a;
+      border-radius: 30px;
+      margin: 30px 0;
+      padding: 40px 60px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      animation: pulse 2s infinite;
+    }
 
-<style>
-  .sos-section {
-    margin-top: 30px;
-    max-width: 500px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 79, 90, 0.7); }
+      70% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(255, 79, 90, 0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 79, 90, 0); }
+    }
 
-  .sos-btn {
-    background-color: #ff4d4d;
-    color: white;
-    font-size: 18px;
-    padding: 14px 24px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background 0.3s;
-  }
+    .sos-box h2 {
+      background: white;
+      color: #ff4f5a;
+      border-radius: 18px;
+      width: 100px;
+      height: 100px;
+      line-height: 100px;
+      margin: auto;
+      font-size: 1.8rem;
+    }
 
-  .sos-btn:hover {
-    background-color: #d93636;
-  }
+    .sos-box button {
+      margin-top: 20px;
+      padding: 12px 30px;
+      background: rgba(255,255,255,0.2);
+      border: 2px solid white;
+      border-radius: 20px;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
 
-  .sos-status {
-    padding: 12px 18px;
-    border-left: 5px solid #8e2de2;
-    background-color: #f2f2f2;
-    border-radius: 10px;
-    font-weight: 500;
-  }
+    .sos-box button:hover {
+      background: white;
+      color: #ff4f5a;
+    }
 
-  .hidden {
-    display: none;
-  }
-</style>
+    .emergency-steps {
+      background: white;
+      color: #333;
+      border-radius: 30px;
+      padding: 30px 20px;
+      max-width: 90%;
+      width: 800px;
+      margin-bottom: 30px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
 
-<script>
-  const sosButton = document.getElementById('sosButton');
-  const sosStatus = document.getElementById('sosStatus');
+    .emergency-steps h3 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #222;
+    }
 
-  sosButton.addEventListener('click', () => {
-    // Simulate sending SOS
-    sosButton.disabled = true;
-    sosButton.textContent = "Sending...";
+    .steps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 20px;
+    }
 
-    setTimeout(() => {
-      sosStatus.textContent = "✅ SOS Alert Sent to your emergency contacts!";
-      sosStatus.classList.remove('hidden');
-      sosButton.textContent = "🚨 Send SOS Alert";
-      sosButton.disabled = false;
-    }, 1500);
-  });
-</script>
+    .step {
+      flex: 1 1 150px;
+      min-width: 140px;
+      background: #f8f8f8;
+      border-radius: 20px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .step-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #7f4fff;
+    }
+
+    @media (max-width: 600px) {
+      .steps {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Medical Emergencies</h1>
+  <p class="description">Help is just a tap away in any emergency situation. Quickly alert your caregivers and stay safe.</p>
+
+  <div class="sos-box">
+    <h2>SOS</h2>
+    <button onclick="sendSOS()">Send Alert</button>
+  </div>
+
+  <div class="emergency-steps">
+    <h3>What to Do in a Medical Emergency</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="step-icon">📞</div>
+        <strong>Call for Help</strong>
+        <p>Use the SOS button to notify your caregivers immediately.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">🧘‍♂️</div>
+        <strong>Stay Calm</strong>
+        <p>Try to remain calm and assess the situation clearly.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">💖</div>
+        <strong>Provide Aid</strong>
+        <p>Offer first aid according to your training, if possible.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">📍</div>
+        <strong>Share Location</strong>
+        <p>Ensure caregivers know your location for quick assistance.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Emergency Alert Sound -->
+  <audio id="alertSound" src="https://www.soundjay.com/button/beep-07.wav" preload="auto"></audio>
+
+  <script>
+    function sendSOS() {
+      document.getElementById('alertSound').play();
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+
+          alert(`🚨 SOS Alert Sent!\n📍 Location: ${lat.toFixed(4)}, ${lon.toFixed(4)}\n📞 Caregivers Notified`);
+          console.log("Location sent: ", lat, lon);
+        }, function() {
+          alert("⚠️ Location access denied. SOS sent without GPS.");
+        });
+      } else {
+        alert("❌ Geolocation not supported.");
+      }
+    }
+  </script>
+
+</body>
+</html>

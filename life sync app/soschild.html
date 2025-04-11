@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Children SOS | LifeSync</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #8e2de2, #ff6ec4);
+      color: white;
+    }
+
+    header {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      background-color: white;
+      color: #8e2de2;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff6ec4;
+      color: white;
+    }
+
+    #map {
+      width: 90%;
+      height: 500px;
+      margin: 0 auto 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    👨‍👩‍👧‍👦 LifeSync - Children's SOS Dashboard
+  </header>
+
+  <div class="controls">
+    <button onclick="showNearby('hospital')">Nearby Hospitals</button>
+    <button onclick="showNearby('police')">Nearby Police Stations</button>
+    <button onclick="showNearby('pharmacy')">Nearby Pharmacies</button>
+  </div>
+
+  <div id="map"></div>
+
+  <!-- Google Maps API -->
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbjmy23jpyAil7JBpIyDcfHJHRbOpGfQQ&libraries=places"
+    onload="initMap()">
+  </script>
+
+  <script>
+    let map;
+    let elderMarker;
+    let service;
+    let markers = [];
+
+    function initMap() {
+      if (!navigator.geolocation) {
+        alert("Geolocation not supported by your browser.");
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(position => {
+        const elderLoc = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+
+        map = new google.maps.Map(document.getElementById("map"), {
+          center: elderLoc,
+          zoom: 14,
+          styles: [
+            {
+              "featureType": "all",
+              "elementType": "geometry.fill",
+              "stylers": [{ "color": "#f7f5f5" }]
+            },
+            {
+              "featureType": "all",
+              "elementType": "labels.text.fill",
+              "stylers": [{ "color": "#3d3d3d" }]
+            }
+          ]
+        });
+
+        elderMarker = new google.maps.Marker({
+          position: elderLoc,
+          map: map,
+          icon: {
+            url: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+            scaledSize: new google.maps.Size(40, 40)
+          },
+          title: "Elder's Current Location"
+        });
+
+        service = new google.maps.places.PlacesService(map);
+      }, () => {
+        alert("Unable to access your location.");
+      });
+    }
+
+    function showNearby(type) {
+      if (!map || !elderMarker || !service) {
+        alert("Map still loading... try again in a few seconds.");
+        return;
+      }
+
+      clearMarkers();
+
+      const request = {
+        location: elderMarker.getPosition(),
+        radius: 5000,
+        type: [type]
+      };
+
+      service.nearbySearch(request, (results, status) => {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          results.slice(0, 5).forEach(place => createMarker(place));
+        } else {
+          alert("No nearby places found.");
+        }
+      });
+    }
+
+    function createMarker(place) {
+      const marker = new google.maps.Marker({
+        map,
+        position: place.geometry.location,
+        title: place.name
+      });
+
+      const infowindow = new google.maps.InfoWindow({
+        content: `<strong>${place.name}</strong><br>${place.vicinity}`
+      });
+
+      marker.addListener("click", () => {
+        infowindow.open(map, marker);
+      });
+
+      markers.push(marker);
+    }
+
+    function clearMarkers() {
+      markers.forEach(marker => marker.setMap(null));
+      markers = [];
+    }
+  </script>
+
+</body>
+</html>
