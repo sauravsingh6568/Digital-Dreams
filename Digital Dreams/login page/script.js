@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
           alert("Login successful!");
           localStorage.setItem("loggedInUser", email);
 
-          window.location.href = "/life%20sync%20app/firstpage.html";
+          window.location.href = "/life%20sync%20app/dash.html";
         } else {
           alert("Incorrect password. Please try again.");
         }

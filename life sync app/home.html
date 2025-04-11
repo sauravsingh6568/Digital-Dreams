@@ -1,0 +1,71 @@
+<!-- File: home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard – LifeSync</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" />
+  <style>
+    body {
+      background: #f9f6ff;
+      padding: 2rem;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    .banner {
+      background: linear-gradient(90deg, #7b42f6, #b01eff);
+      color: white;
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-box {
+      background: white;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      margin-top: 2rem;
+    }
+
+    .card-box h5 {
+      font-weight: bold;
+    }
+
+    .recent {
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="banner">
+    <h2 class="fw-bold">Welcome to Your Dashboard</h2>
+    <p>Monitor real-time health, stay emotionally connected & alert your family instantly.</p>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <div class="card-box">
+        <h5><i class="bi bi-heart-pulse text-danger"></i> Vitals</h5>
+        <p>Heart Rate: <strong>78 bpm</strong></p>
+        <p>Oxygen: <strong>96%</strong></p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card-box">
+        <h5><i class="bi bi-emoji-smile text-warning"></i> Mood</h5>
+        <p>Today’s Mood: 😊 <strong>Happy</strong></p>
+        <p>History: Calm → Happy</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="recent">
+    <h5 class="fw-semibold">Recent Activities</h5>
+    <p class="text-muted">Feature in progress: Mood check-ins, call logs, medical alerts...</p>
+  </div>
+</body>
+</html>

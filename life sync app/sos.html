@@ -1,0 +1,65 @@
+<div class="header">SOS Call</div>
+
+<div class="sos-section">
+  <p>If you're in an emergency, press the button below to send an alert to your emergency contacts.</p>
+
+  <button id="sosButton" class="sos-btn">🚨 Send SOS Alert</button>
+
+  <div id="sosStatus" class="sos-status hidden"></div>
+</div>
+
+<style>
+  .sos-section {
+    margin-top: 30px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .sos-btn {
+    background-color: #ff4d4d;
+    color: white;
+    font-size: 18px;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+  }
+
+  .sos-btn:hover {
+    background-color: #d93636;
+  }
+
+  .sos-status {
+    padding: 12px 18px;
+    border-left: 5px solid #8e2de2;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    font-weight: 500;
+  }
+
+  .hidden {
+    display: none;
+  }
+</style>
+
+<script>
+  const sosButton = document.getElementById('sosButton');
+  const sosStatus = document.getElementById('sosStatus');
+
+  sosButton.addEventListener('click', () => {
+    // Simulate sending SOS
+    sosButton.disabled = true;
+    sosButton.textContent = "Sending...";
+
+    setTimeout(() => {
+      sosStatus.textContent = "✅ SOS Alert Sent to your emergency contacts!";
+      sosStatus.classList.remove('hidden');
+      sosButton.textContent = "🚨 Send SOS Alert";
+      sosButton.disabled = false;
+    }, 1500);
+  });
+</script>

@@ -1,0 +1,83 @@
+<div class="header">Contact & Support</div>
+
+<div class="contact-section">
+  <p>If you have questions or need help, feel free to contact our support team. We'll get back to you as soon as possible.</p>
+
+  <form class="contact-form" id="contactForm">
+    <label for="name">Your Name</label>
+    <input type="text" id="name" placeholder="Enter your name" required>
+
+    <label for="email">Your Email</label>
+    <input type="email" id="email" placeholder="Enter your email" required>
+
+    <label for="message">Message</label>
+    <textarea id="message" rows="5" placeholder="Type your message here..." required></textarea>
+
+    <button type="submit" class="send-btn">Send Message</button>
+
+    <div id="formMessage" class="form-message hidden"></div>
+  </form>
+</div>
+
+<style>
+  .contact-section {
+    max-width: 600px;
+    margin-top: 20px;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: inherit;
+  }
+
+  .send-btn {
+    background: linear-gradient(to right, #8e2de2, #4a00e0);
+    color: white;
+    padding: 12px;
+    border: none;
+    font-size: 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: opacity 0.2s;
+  }
+
+  .send-btn:hover {
+    opacity: 0.9;
+  }
+
+  .form-message {
+    margin-top: 10px;
+    background-color: #dff0d8;
+    color: #3c763d;
+    padding: 10px 15px;
+    border-radius: 10px;
+  }
+
+  .hidden {
+    display: none;
+  }
+</style>
+
+<script>
+  const contactForm = document.getElementById('contactForm');
+  const formMessage = document.getElementById('formMessage');
+
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    formMessage.classList.remove('hidden');
+    formMessage.textContent = "✅ Your message has been sent! We'll respond soon.";
+    contactForm.reset();
+  });
+</script>

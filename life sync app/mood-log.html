@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mood Log – LifeSync</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3edff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .mood-container {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .emoji-options button {
+      font-size: 28px;
+      margin: 8px;
+      padding: 10px;
+      border: 2px solid transparent;
+      background: #f0f0f0;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+    .emoji-options button:hover {
+      transform: scale(1.2);
+      border-color: #7f4fff;
+    }
+    textarea {
+      width: 100%;
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      resize: none;
+    }
+    #musicSuggestion {
+      margin-top: 15px;
+      color: #7f4fff;
+      font-weight: bold;
+    }
+    button.submit-btn {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background: #7f4fff;
+      color: white;
+      border: none;
+      border-radius: 16px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s ease;
+    }
+    button.submit-btn:hover {
+      background: #5e34e6;
+    }
+  </style>
+</head>
+<body>
+  <div class="mood-container">
+    <h2>How are you feeling today?</h2>
+    <div class="emoji-options">
+      <button onclick="selectMood('sad')">😢</button>
+      <button onclick="selectMood('neutral')">😐</button>
+      <button onclick="selectMood('happy')">😊</button>
+      <button onclick="selectMood('love')">😍</button>
+      <button onclick="selectMood('angry')">😠</button>
+    </div>
+    <textarea id="thoughts" placeholder="Want to share your thoughts? (Optional)"></textarea>
+    <div id="musicSuggestion"></div>
+    <button class="submit-btn" onclick="submitMood()">Submit</button>
+  </div>
+
+  <script>
+    let selectedMood = "";
+
+    function selectMood(mood) {
+      selectedMood = mood;
+
+      const music = {
+        sad: "🎵 Playing soft piano music...",
+        neutral: "🎵 Playing lo-fi chill...",
+        happy: "🎵 Playing feel-good pop!",
+        love: "🎵 Playing romantic tracks 💖",
+        angry: "🎵 Playing calming instrumental"
+      };
+
+      document.getElementById("musicSuggestion").innerText = music[mood] || "";
+    }
+
+    function submitMood() {
+      const thoughts = document.getElementById("thoughts").value;
+      if (!selectedMood) {
+        alert("Please select a mood first!");
+        return;
+      }
+      alert(`✅ Mood saved!\n\nMood: ${selectedMood}\nThoughts: ${thoughts || "None"}`);
+      // You can now push this data to Firebase or localStorage here
+    }
+  </script>
+</body>
+</html>
