@@ -80,15 +80,10 @@ WSGI_APPLICATION = 'authproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'life_sync',       # from Render
-        'USER': 'life_sync_user',       # from Render
-        'PASSWORD': '9zMNMoIqbYeiUsoIi1BprwKoY1SejJW4',  # from Render
-        'HOST': 'dpg-cvslvkvdiees73fja1u0-a.singapore-postgres.render.com',
-        'PORT': '5432',       # from Render
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 
 # Password validation
