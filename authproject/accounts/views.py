@@ -44,3 +44,7 @@ def login_view(request):
             return JsonResponse({'error': 'Invalid credentials'}, status=400)
 
     return JsonResponse({'error': 'Invalid method'}, status=400)
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("Welcome to the Home Page!")
