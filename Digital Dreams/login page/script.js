@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const API_URL = "http://127.0.0.1:8000/auth";
+  // const API_URL = "http://127.0.0.1:8000/auth";
+  const API_URL = "https://digital-dreams-ovk2.onrender.com";
 
   // LOGIN
   const loginForm = document.getElementById("loginForm");
