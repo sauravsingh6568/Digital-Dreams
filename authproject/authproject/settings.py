@@ -1,6 +1,8 @@
 from pathlib import Path
 import dj_database_url
 import os
+ROOT_URLCONF = 'authproject.urls'
+
 # from dotenv import load_dotenv
 
 # load_dotenv()  # optional but good for future
