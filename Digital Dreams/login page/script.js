@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // const API_URL = "http://127.0.0.1:8000/auth";
-  const API_URL = "https://digital-dreams-ovk2.onrender.com";
+  const API_URL = "https://digital-dreams-ovk2.onrender.com/auth"; // ✅ Clean base URL
 
   // LOGIN
   const loginForm = document.getElementById("loginForm");
@@ -28,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (response.ok) {
           localStorage.setItem("loggedInUser", email);
-          // ✅ Match old behavior
           window.location.href = "/life%20sync%20app/dash.html";
         } else {
           alert(data.error || "Login failed.");
