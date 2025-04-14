@@ -120,13 +120,11 @@
 
     .cta {
       background: linear-gradient(355deg, #cf328f, #524ce7);
-
       padding: 4rem 2rem;
     }
 
     .cta h2 {
       color: white;
-      /* Set text color to white */
     }
 
     .footer {
@@ -148,22 +146,15 @@
 
     .btn.w-100 {
       background-color: #120ef1;
-      /* Add background color */
       color: white;
-      /* Ensure text is visible */
       border: none;
-      /* Remove border */
       border-radius: 8px;
-      /* Optional: Add rounded corners */
       padding: 10px 20px;
-      /* Optional: Add padding */
       transition: background-color 0.3s ease;
-      /* Optional: Add hover effect */
     }
 
     .btn.w-100:hover {
       background-color: #9500ff;
-      /* Darker shade for hover effect */
     }
 
     .feature-box {
@@ -171,41 +162,12 @@
       border-radius: 16px;
       padding: 30px;
       box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
-      /* Darker shadow */
       transition: box-shadow 0.3s ease, transform 0.3s ease;
-      /* Smooth hover effect */
     }
 
     .feature-box:hover {
       box-shadow: 0 15px 60px rgba(0, 0, 0, 0.6);
-      /* Even darker shadow on hover */
       transform: translateY(-8px);
-      /* Slight lift on hover */
-    }
-
-
-    .feature-box:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-    }
-
-    #features h2 {
-      font-size: 2rem;
-      color: rgb(14, 1, 1);
-    }
-
-    .feature-box {
-      background: rgb(255, 255, 255);
-      border-radius: 20px;
-      padding: 30px;
-      box-shadow: #0c0c0c;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      height: 100%;
-    }
-
-    .feature-box:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 70px rgba(14, 0, 0, 0.07);
     }
 
     .feature-box .icon i {
@@ -226,6 +188,41 @@
       font-size: 0.95rem;
       color: #636e72;
       margin-top: 10px;
+    }
+
+    /* Map Section */
+    #map {
+      height: 400px;
+      width: 100%;
+    }
+
+    /* Enhanced button styles */
+    .enhanced-btn {
+      background-color: #0e076b;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 30px;
+      color: #fff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+      display: inline-block;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .enhanced-btn:hover,
+    .enhanced-btn:focus {
+      background-color: #4b1bbc;
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .enhanced-btn:active {
+      background-color: #ff6250;
+      transform: translateY(0);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
   </style>
 </head>
@@ -260,8 +257,8 @@
           <h1>A Smart Companion for Your Loved Ones</h1>
           <p>Real-time care, connection, and comfort — in just one tap.</p>
           <div>
-            <a href="#" class="btn btn-primary-custom me-3">Try Live Demo</a>
-            <a href="#" class="btn btn-secondary-custom">Sign Up For Free</a>
+
+            <a href="dash.html" class="btn btn-primary-custom me-3 enhanced-btn">GO TO DASHBOARD</a>
           </div>
         </div>
       </div>
@@ -269,7 +266,6 @@
   </section>
 
   <!-- Features Section -->
-  <!-- Modern Features Section (new one with emojis) -->
   <section id="features" class="py-5 text-center">
     <h2 class="fw-bold mb-4">Features</h2>
     <div class="container">
@@ -286,59 +282,18 @@
         <div class="col-md-3">
           <div class="feature-box p-4 shadow-sm">
             <div class="icon mb-3">
-              <img class="video-img" src="/Digital Dreams/landing page/assets/sos.svg" alt="video-calling" />
+              <img class="video-img" src="/Digital Dreams/landing page/assets/sos.svg" alt="SOS" />
             </div>
             <h5>Emergency SOS</h5>
-            <p>One Tap emergency alert system thanistanty notifies caregivers.</p>
+            <p>One Tap emergency alert system that instantly notifies caregivers.</p>
           </div>
         </div>
         <div class="col-md-3">
           <div class="feature-box p-4 shadow-sm">
             <div class="icon mb-3">
-              <img class="video-img" src="/Digital Dreams/landing page/assets/heart-pulse-solid.svg"
-                alt="video-calling" />
+              <img class="video-img" src="/Digital Dreams/landing page/assets/heart-pulse-solid.svg" alt="Health" />
             </div>
             <h5>Health Monitoring</h5>
-            <p>Integrate vitals like heart rate & oxygen using IoT for real-time tracking.</p>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <a href="/landing page/medical emergence/medical emergence.html" style="text-decoration: none;">
-            <div class="feature-box p-4 shadow-sm">
-              <div class="icon mb-3">
-                <img class="video-img" src="/Digital Dreams/landing page/assets/kit-medical-solid.svg"
-                  alt="video-calling" />
-              </div>
-              <h5>Medical emergencies </h5>
-              <p>Integrate vitals like heart rate & oxygen using IoT for real-time tracking.</p>
-            </div>
-        </div>
-        </a>
-        <div class="col-md-3">
-          <div class="feature-box p-4 shadow-sm">
-            <div class="icon mb-3">
-              <img class="video-img" src="/Digital Dreams/landing page/assets/user-doctor-solid.svg" alt="Doctor" />
-            </div>
-            <h5>Doctor/medicine </h5>
-            <p>Integrate vitals like heart rate & oxygen using IoT for real-time tracking.</p>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="feature-box p-4 shadow-sm">
-            <div class="icon mb-3">
-              <img class="video-img" src="/Digital Dreams/landing page/assets/government-building.png"
-                alt="Government" />
-            </div>
-            <h5>Government Schemes/NGOs </h5>
-            <p>Integrate vitals like heart rate & oxygen using IoT for real-time tracking.</p>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="feature-box p-4 shadow-sm">
-            <div class="icon mb-3">
-              <img class="video-img" src="/Digital Dreams/landing page/assets/dial.png" alt="Mood-Detector" />
-            </div>
-            <h5>Mood-Detector </h5>
             <p>Integrate vitals like heart rate & oxygen using IoT for real-time tracking.</p>
           </div>
         </div>
@@ -346,37 +301,48 @@
     </div>
   </section>
 
-  <!-- CTA Section -->
-  <section class="cta text-center">
+  <!-- Map Section -->
+  <section id="map-section" class="py-5">
     <div class="container">
-      <h2 class="mb-4 fw-bold">Contact Us</h2>
-      <form class="row justify-content-center">
-        <div class="col-md-5 mb-3">
-          <input type="text" class="form-control" placeholder="Your Name" required>
-        </div>
-        <div class="col-md-5 mb-3">
-          <input type="email" class="form-control" placeholder="Your Email" required>
-        </div>
-        <div class="col-md-10 mb-3">
-          <textarea class="form-control" placeholder="Write your message here..." style="height: 146px;"
-            required></textarea>
-        </div>
-        <div class="col-md-10">
-          <button type="submit" class="btn w-100">Send Message</button>
-        </div>
+      <h2 class="fw-bold mb-4 text-center">Track Your Loved One's Location</h2>
+      <div id="map"></div>
+    </div>
   </section>
 
   <!-- Footer -->
-  <footer class="footer d-flex flex-wrap justify-content-between align-items-center">
-    <div class="mb-2">
-      <a href="#">About</a>
-      <a href="#">Terms</a>
-      <a href="#">Privacy</a>
-      <a href="#">Contact Us</a>
-    </div>
-
-
+  <footer class="footer text-center">
+    <p>&copy; 2025 LifeSync. All rights reserved.</p>
   </footer>
+
+  <!-- Google Maps API -->
+  <script>
+    function initMap() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          const userLocation = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+
+          const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 14,
+            center: userLocation
+          });
+
+          const marker = new google.maps.Marker({
+            position: userLocation,
+            map: map
+          });
+        }, function () {
+          alert("Geolocation failed or is not supported by this browser.");
+        });
+      } else {
+        alert("Geolocation is not supported by this browser.");
+      }
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbjmy23jpyAil7JBpIyDcfHJHRbOpGfQQ&callback=initMap"
+    async defer></script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
