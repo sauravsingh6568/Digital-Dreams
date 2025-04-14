@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from accounts import views  # Import your home view
 from django.contrib.auth import authenticate, login
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
