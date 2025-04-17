@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
           localStorage.setItem("loggedInUser", email);
           document.getElementById("successMessage").style.display = "block";
           setTimeout(() => {
-            window.location.href = "/life%20sync%20app/dash.html";
+            window.location.href = "/life sync app/land.html";
           }, 1500);
         } else {
           alert(data.error || "Login failed.");
