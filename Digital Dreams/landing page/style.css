@@ -359,13 +359,39 @@ textarea.form-control {
   background-color: #5f27cd;
 }
 
-/* Footer */
+/* footer top Section */
+
+.quote {
+  padding: 40px;
+  border-radius: 12px;
+  font-style: italic;
+  font-size: 16px;
+}
+.cta {
+  background: linear-gradient(to bottom right, #e9e9e9, #375dc4);
+  padding: 60px 0;
+}
+
+.cta2 .btn1 {
+  background-color: rgb(247, 177, 241);
+  color: #1b1247;
+  border: 1px solid #ddd;
+  border-radius: 80px;
+}
+.cta2 .btn2 {
+  background-color: #ff6250;
+  color: white;
+  border: none;
+  border-radius: 80px;
+}
+
 footer {
-  background-color: #fafafa;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(48, 47, 47);
   color: #888;
   font-size: 0.9rem;
-  padding: 20px;
-  text-align: center;
+  padding: 5px;
   border-top: 1px solid #e0e0e0;
 }
 
