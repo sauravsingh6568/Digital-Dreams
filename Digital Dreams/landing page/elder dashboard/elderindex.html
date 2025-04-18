@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -25,6 +25,7 @@
       border-right: 1px solid #ddd;
       padding: 2rem 1rem;
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
     }
 
     .sidebar .nav-link {
@@ -57,16 +58,17 @@
 
     .topbar {
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
       align-items: center;
       padding: 1rem;
       background-color: #fff;
       border-bottom: 1px solid #ddd;
     }
 
-    .topbar span {
-      margin-right: 10px;
-      font-weight: 500;
+    .topbar .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
     }
 
     .profile-img {
@@ -81,12 +83,33 @@
       width: 100%;
       border: none;
     }
+
+    @media (max-width: 768px) {
+      .wrapper {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        position: absolute;
+        height: 100%;
+        z-index: 1000;
+        transform: translateX(-100%);
+      }
+
+      .sidebar.active {
+        transform: translateX(0);
+      }
+
+      .topbar .menu-toggle {
+        display: block;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="wrapper">
     <!-- Sidebar -->
-    <div class="sidebar">
+    <div class="sidebar" id="sidebar">
       <a href="/Digital Dreams/landing page/land.html"><h4 class="fw-bold text-primary">LifeSync</h4></a>
       <nav class="nav flex-column">
         <a class="nav-link active" onclick="loadPage('home.html', this)"><i class="bi bi-house-door"></i> Dashboard</a>
@@ -100,6 +123,7 @@
     <div class="main-content">
       <!-- Topbar with Name & DP -->
       <div class="topbar">
+        <i class="bi bi-list menu-toggle" onclick="toggleSidebar()"></i>
         <span>Hello, Rudra</span>
         <img src="https://i.pravatar.cc/38" alt="User" class="profile-img" />
       </div>
@@ -113,11 +137,19 @@
     function loadPage(page, element) {
       document.getElementById("contentFrame").src = page;
 
-      // Update active class
       document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.remove('active');
       });
       element.classList.add('active');
+
+      // Close sidebar on mobile
+      if (window.innerWidth <= 768) {
+        document.getElementById('sidebar').classList.remove('active');
+      }
+    }
+
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('active');
     }
   </script>
 </body>
