@@ -441,31 +441,39 @@
         });
       } else {
         alert("Geolocation is not supported by this browser.");
+          }
+        }
+      </script>
+      <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Dropdown Elements
+    const dropdownBtn = document.getElementById('dropdownBtn');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    const logoDropdownBtn = document.getElementById('logoDropdownBtn');
+    const logoDropdownMenu = document.getElementById('logoDropdownMenu');
+
+    // Toggle dropdown menus
+    dropdownBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdownMenu.classList.toggle('hidden');
+    });
+
+    logoDropdownBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      logoDropdownMenu.classList.toggle('hidden');
+    });
+
+    // Close dropdowns on outside click
+    window.addEventListener('click', (e) => {
+      if (!dropdownBtn.contains(e.target)) {
+        dropdownMenu.classList.add('hidden');
       }
-    }
-  const dropdownBtn = document.getElementById('dropdownBtn');
-  const dropdownMenu = document.getElementById('dropdownMenu');
-  const logoDropdownBtn = document.getElementById('logoDropdownBtn');
-  const logoDropdownMenu = document.getElementById('logoDropdownMenu');
-
-  dropdownBtn.addEventListener('click', () => {
-    dropdownMenu.classList.toggle('hidden');
+      if (!logoDropdownBtn.contains(e.target)) {
+        logoDropdownMenu.classList.add('hidden');
+      }
+    });
   });
-
-  logoDropdownBtn.addEventListener('click', () => {
-    logoDropdownMenu.classList.toggle('hidden');
-  });
-
-  window.addEventListener('click', (e) => {
-    if (!dropdownBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
-      dropdownMenu.classList.add('hidden');
-    }
-    if (!logoDropdownBtn.contains(e.target) && !logoDropdownMenu.contains(e.target)) {
-      logoDropdownMenu.classList.add('hidden');
-    }
-  });
-
-  </script>
+</script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbjmy23jpyAil7JBpIyDcfHJHRbOpGfQQ&callback=initMap"
     async defer></script>
 
