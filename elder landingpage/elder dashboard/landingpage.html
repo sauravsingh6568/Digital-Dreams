@@ -233,59 +233,79 @@
 <body>
 
 
-    
-      <!-- Navbar -->
-      <nav class="bg-white shadow-md px-4 md:px-8 py-3 flex justify-between items-center sticky top-0 z-50">
-        <!-- Logo -->
-        <div class="flex items-center space-x-3">
-         <span class="text-xl font-bold text-gray-800">LifeSync</span>
-        </div>
-    
-        <!-- Center Links -->
-        <div class="hidden md:flex space-x-6 text-gray-700 font-medium">
-          <a href="#features" class="hover:text-violet-600">Features</a>
-          <a href="#map" class="hover:text-violet-600">Map</a>
-        </div>
-    
-        <!-- Profile Dropdown -->
-        <div class="relative">
-          <button id="dropdownBtn" class="flex items-center space-x-2 focus:outline-none">
-            <img src="https://via.placeholder.com/40" alt="User DP" class="w-10 h-10 rounded-full border-2 border-violet-500">
-            <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-    
-          <!-- Dropdown Menu -->
-          <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-44 bg-white rounded-xl shadow-lg z-50">
-            <a href="/profile" class="block px-4 py-2 text-gray-700 hover:bg-violet-100">Profile</a>
-            <a href="/settings" class="block px-4 py-2 text-gray-700 hover:bg-violet-100">Settings</a>
-            <a href="/logout" class="block px-4 py-2 text-red-600 hover:bg-red-100">Logout</a>
-          </div>
-        </div>
-      </nav>
-    
-      <!-- Mobile Menu (Optional) -->
-      <div class="md:hidden px-4 py-2 space-y-2 bg-white shadow-md text-gray-700 font-medium">
-        <a href="#features" class="block hover:text-violet-600">Features</a>
-        <a href="/elder landingpage/elder dashboard/elderindex.html" class="block hover:text-violet-600">Go to Dashboard</a>
-        <a href="#map" class="block hover:text-violet-600">Map</a>
-      </div>
-    
-      <script>
-        const dropdownBtn = document.getElementById('dropdownBtn');
-        const dropdownMenu = document.getElementById('dropdownMenu');
-    
-        dropdownBtn.addEventListener('click', () => {
-          dropdownMenu.classList.toggle('hidden');
-        });
-    
-        window.addEventListener('click', (e) => {
-          if (!dropdownBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
-            dropdownMenu.classList.add('hidden');
-          }
-        });
-      </script>
+    <!-- Navbar -->
+<nav class="bg-white shadow-md px-4 md:px-8 py-3 flex justify-between items-center sticky top-0 z-50">
+  <!-- Logo Dropdown -->
+  <div class="relative">
+    <button id="logoDropdownBtn" class="flex items-center space-x-2 text-xl font-bold text-gray-800 focus:outline-none">
+      <span>LifeSync</span>
+      <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </button>
+
+    <!-- Logo Dropdown Menu -->
+    <div id="logoDropdownMenu" class="hidden absolute left-0 mt-2 w-44 bg-white rounded-xl shadow-lg z-50">
+      <a href="#features" class="block px-4 py-2 text-gray-700 hover:bg-violet-100">Features</a>
+      <a href="#map" class="block px-4 py-2 text-gray-700 hover:bg-violet-100">Map</a>
+    </div>
+  </div>
+
+  <!-- Profile Dropdown -->
+  <div class="relative">
+    <button id="dropdownBtn" class="flex items-center space-x-2 focus:outline-none">
+      <img src="https://via.placeholder.com/40" alt="User DP" class="w-10 h-10 rounded-full border-2 border-violet-500">
+      <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </button>
+
+    <!-- Profile Dropdown Menu -->
+    <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-44 bg-white rounded-xl shadow-lg z-50">
+      <a href="/profile" class="block px-4 py-2 text-gray-700 hover:bg-violet-100">Profile</a>
+      <a href="/settings" class="block px-4 py-2 text-gray-700 hover:bg-violet-100">Settings</a>
+      <a href="/logout" class="block px-4 py-2 text-red-600 hover:bg-red-100">Logout</a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Toggle Sidebar Visibility
+  const hideSidebarBtn = document.getElementById('hideSidebarBtn');
+  const sidebar = document.getElementById('sidebar'); // Assuming you have a sidebar element
+
+  hideSidebarBtn.addEventListener('click', () => {
+    if (sidebar) {
+      sidebar.classList.toggle('hidden');
+      hideSidebarBtn.innerHTML = sidebar.classList.contains('hidden')
+        ? '<i class="fas fa-bars"></i>'
+        : '<i class="fas fa-times"></i>';
+    }
+  });
+
+  // Dropdown Menu Logic
+  const dropdownBtn = document.getElementById('dropdownBtn');
+  const dropdownMenu = document.getElementById('dropdownMenu');
+  const logoDropdownBtn = document.getElementById('logoDropdownBtn');
+  const logoDropdownMenu = document.getElementById('logoDropdownMenu');
+
+  dropdownBtn.addEventListener('click', () => {
+    dropdownMenu.classList.toggle('hidden');
+  });
+
+  logoDropdownBtn.addEventListener('click', () => {
+    logoDropdownMenu.classList.toggle('hidden');
+  });
+
+  window.addEventListener('click', (e) => {
+    if (!dropdownBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+      dropdownMenu.classList.add('hidden');
+    }
+    if (!logoDropdownBtn.contains(e.target) && !logoDropdownMenu.contains(e.target)) {
+      logoDropdownMenu.classList.add('hidden');
+    }
+  });
+</script>
 
     
   <!-- Hero Section -->
@@ -423,6 +443,28 @@
         alert("Geolocation is not supported by this browser.");
       }
     }
+  const dropdownBtn = document.getElementById('dropdownBtn');
+  const dropdownMenu = document.getElementById('dropdownMenu');
+  const logoDropdownBtn = document.getElementById('logoDropdownBtn');
+  const logoDropdownMenu = document.getElementById('logoDropdownMenu');
+
+  dropdownBtn.addEventListener('click', () => {
+    dropdownMenu.classList.toggle('hidden');
+  });
+
+  logoDropdownBtn.addEventListener('click', () => {
+    logoDropdownMenu.classList.toggle('hidden');
+  });
+
+  window.addEventListener('click', (e) => {
+    if (!dropdownBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+      dropdownMenu.classList.add('hidden');
+    }
+    if (!logoDropdownBtn.contains(e.target) && !logoDropdownMenu.contains(e.target)) {
+      logoDropdownMenu.classList.add('hidden');
+    }
+  });
+
   </script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbjmy23jpyAil7JBpIyDcfHJHRbOpGfQQ&callback=initMap"
     async defer></script>

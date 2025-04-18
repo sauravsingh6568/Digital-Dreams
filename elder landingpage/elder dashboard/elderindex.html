@@ -17,6 +17,7 @@
       display: flex;
       height: 100vh;
       overflow: hidden;
+      flex-direction: row;
     }
 
     .sidebar {
@@ -27,10 +28,11 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
       transition: transform 0.3s ease;
       position: relative;
+      z-index: 1050;
     }
 
     .sidebar a {
-      text-decoration: none; /* removes underline from LifeSync */
+      text-decoration: none;
     }
 
     .sidebar .nav-link {
@@ -68,6 +70,8 @@
       display: flex;
       flex-direction: column;
       overflow: hidden;
+      position: relative;
+      z-index: 1;
     }
 
     .topbar {
@@ -95,9 +99,11 @@
     iframe {
       flex: 1;
       width: 100%;
+      height: calc(100vh - 70px);
       border: none;
     }
 
+    /* Mobile styles */
     @media (max-width: 768px) {
       .wrapper {
         flex-direction: column;
@@ -108,8 +114,9 @@
         top: 0;
         left: 0;
         height: 100%;
-        z-index: 1000;
+        z-index: 1050;
         transform: translateX(-100%);
+        padding-top: 3rem;
       }
 
       .sidebar.active {
@@ -121,6 +128,25 @@
       }
 
       .topbar .menu-toggle {
+        display: block;
+      }
+
+      iframe {
+        height: calc(100vh - 130px);
+      }
+
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1049;
+        display: none;
+      }
+
+      .overlay.show {
         display: block;
       }
     }
@@ -142,16 +168,19 @@
       </nav>
     </div>
 
+    <!-- Dark overlay for mobile -->
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
     <!-- Main Content Area -->
     <div class="main-content">
-      <!-- Topbar with Menu Toggle, Name & DP -->
+      <!-- Topbar -->
       <div class="topbar">
         <i class="bi bi-list menu-toggle" onclick="toggleSidebar()"></i>
         <span>Hello, Rudra</span>
         <img src="https://i.pravatar.cc/38" alt="User" class="profile-img" />
       </div>
 
-      <!-- iFrame Container -->
+      <!-- iFrame -->
       <iframe id="contentFrame" src="/elder landingpage/elder dashboard/home.html"></iframe>
     </div>
   </div>
@@ -160,20 +189,22 @@
     function loadPage(page, element) {
       document.getElementById("contentFrame").src = page;
 
-      // Remove active from all, add to selected
       document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.remove('active');
       });
       element.classList.add('active');
 
-      // Close sidebar on mobile after selecting
       if (window.innerWidth <= 768) {
         document.getElementById('sidebar').classList.remove('active');
+        document.getElementById('overlay').classList.remove('show');
       }
     }
 
     function toggleSidebar() {
-      document.getElementById('sidebar').classList.toggle('active');
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('overlay');
+      sidebar.classList.toggle('active');
+      overlay.classList.toggle('show');
     }
   </script>
 </body>
