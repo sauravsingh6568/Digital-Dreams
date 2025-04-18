@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -17,6 +17,7 @@
       display: flex;
       height: 100vh;
       overflow: hidden;
+      flex-direction: row;
     }
 
     .sidebar {
@@ -25,6 +26,13 @@
       border-right: 1px solid #ddd;
       padding: 2rem 1rem;
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+      position: relative;
+      z-index: 1050;
+    }
+
+    .sidebar a {
+      text-decoration: none;
     }
 
     .sidebar .nav-link {
@@ -48,25 +56,37 @@
       margin-right: 8px;
     }
 
+    .sidebar .close-btn {
+      display: none;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
     .main-content {
       flex: 1;
       display: flex;
       flex-direction: column;
       overflow: hidden;
+      position: relative;
+      z-index: 1;
     }
 
     .topbar {
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
       align-items: center;
       padding: 1rem;
       background-color: #fff;
       border-bottom: 1px solid #ddd;
     }
 
-    .topbar span {
-      margin-right: 10px;
-      font-weight: 500;
+    .topbar .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
     }
 
     .profile-img {
@@ -79,35 +99,89 @@
     iframe {
       flex: 1;
       width: 100%;
+      height: calc(100vh - 70px);
       border: none;
+    }
+
+    /* Mobile styles */
+    @media (max-width: 768px) {
+      .wrapper {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        z-index: 1050;
+        transform: translateX(-100%);
+        padding-top: 3rem;
+      }
+
+      .sidebar.active {
+        transform: translateX(0);
+      }
+
+      .sidebar .close-btn {
+        display: block;
+      }
+
+      .topbar .menu-toggle {
+        display: block;
+      }
+
+      iframe {
+        height: calc(100vh - 130px);
+      }
+
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1049;
+        display: none;
+      }
+
+      .overlay.show {
+        display: block;
+      }
     }
   </style>
 </head>
 <body>
   <div class="wrapper">
     <!-- Sidebar -->
-    <div class="sidebar">
-      <h4 class="fw-bold text-primary">LifeSync</h4>
+    <div class="sidebar" id="sidebar">
+      <span class="close-btn" onclick="toggleSidebar()">&times;</span>
+      <a href="/elder landingpage/elder dashboard/landingpage.html">
+        <h4 class="fw-bold text-primary">LifeSync</h4>
+      </a>
       <nav class="nav flex-column">
         <a class="nav-link active" onclick="loadPage('home.html', this)"><i class="bi bi-house-door"></i> Dashboard</a>
         <a class="nav-link" onclick="loadPage('vitals.html', this)"><i class="bi bi-heart-pulse"></i> Vitals</a>
         <a class="nav-link" onclick="loadPage('mood-log.html', this)"><i class="bi bi-chat-left-text"></i> Mood Log</a>
         <a class="nav-link" onclick="loadPage('sos.html', this)"><i class="bi bi-telephone-inbound"></i> SOS Calls</a>
-        <a class="nav-link" onclick="loadPage('contact.html', this)"><i class="bi bi-person-lines-fill"></i> Contacts</a>
-        <a class="nav-link" onclick="loadPage('logout.html', this)"><i class="bi bi-box-arrow-right"></i> Logout</a>
       </nav>
     </div>
 
+    <!-- Dark overlay for mobile -->
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
     <!-- Main Content Area -->
     <div class="main-content">
-      <!-- Topbar with Name & DP -->
+      <!-- Topbar -->
       <div class="topbar">
+        <i class="bi bi-list menu-toggle" onclick="toggleSidebar()"></i>
         <span>Hello, Rudra</span>
         <img src="https://i.pravatar.cc/38" alt="User" class="profile-img" />
       </div>
 
-      <!-- iFrame Container -->
-      <iframe id="contentFrame" src="home.html"></iframe>
+      <!-- iFrame -->
+      <iframe id="contentFrame" src="/elder landingpage/elder dashboard/home.html"></iframe>
     </div>
   </div>
 
@@ -115,11 +189,22 @@
     function loadPage(page, element) {
       document.getElementById("contentFrame").src = page;
 
-      // Update active class
       document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.remove('active');
       });
       element.classList.add('active');
+
+      if (window.innerWidth <= 768) {
+        document.getElementById('sidebar').classList.remove('active');
+        document.getElementById('overlay').classList.remove('show');
+      }
+    }
+
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('overlay');
+      sidebar.classList.toggle('active');
+      overlay.classList.toggle('show');
     }
   </script>
 </body>

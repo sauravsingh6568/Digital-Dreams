@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LifeSync – Family SOS</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbjmy23jpyAil7JBpIyDcfHJHRbOpGfQQ&libraries=places,geometry&callback=initMap"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8f6ff;
+      color: #333;
+    }
+    .container {
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .sidebar {
+      width: 220px;
+      background: #ffffff;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+    .sidebar h2 {
+      font-size: 22px;
+      font-weight: bold;
+      color: #5a00ff;
+      margin-bottom: 30px;
+    }
+    .nav-item {
+      padding: 12px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      text-decoration: none;
+      color: #333;
+      transition: background 0.2s ease;
+    }
+    .nav-item:hover,
+    .nav-item.active {
+      background: #e0d0ff;
+      color: #5a00ff;
+      font-weight: bold;
+    }
+    .main {
+      flex: 1;
+      padding: 30px;
+      overflow-y: auto;
+    }
+    .header {
+      background: linear-gradient(to right, #8e2de2, #4a00e0);
+      padding: 20px;
+      border-radius: 16px;
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+    #map {
+      height: 400px;
+      width: 100%;
+      border-radius: 16px;
+      margin-bottom: 20px;
+    }
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      flex: 1;
+      min-width: 250px;
+    }
+    .card h3 {
+      color: #5a00ff;
+      margin: 0 0 10px;
+    }
+    .chat-box {
+      background: white;
+      padding: 20px;
+      border-radius: 16px;
+      max-height: 300px;
+      overflow-y: auto;
+      margin-top: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    .chat-input {
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+    }
+    .chat-input input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    .chat-input button {
+      padding: 10px 15px;
+      background: #5a00ff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h2>LifeSync</h2>
+      <a href="index.html" class="nav-item">Dashboard</a>
+      <a href="family-vitals.html" class="nav-item">Vitals</a>
+      <a href="family-mood.html" class="nav-item">Mood</a>
+      <a href="family-sos.html" class="nav-item active">SOS</a>
+      <a href="contacts.html" class="nav-item">Contacts</a>
+      <a href="logout.html" class="nav-item">Logout</a>
+    </aside>
+
+    <main class="main">
+      <div class="header">Real-Time SOS Tracking</div>
+      <div id="map"></div>
+
+      <section class="cards">
+        <div class="card">
+          <h3>SOS Status</h3>
+          <p id="sos-status">No active SOS</p>
+        </div>
+        <div class="card">
+          <h3>Battery Level</h3>
+          <p id="battery-level">90%</p>
+        </div>
+        <div class="card">
+          <h3>Distance to Elder</h3>
+          <p id="distance">--</p>
+        </div>
+      </section>
+
+      <div class="chat-box" id="chatBox">
+        <h3>Chat with Elder</h3>
+        <div id="messages"></div>
+        <div class="chat-input">
+          <input type="text" id="chatInput" placeholder="Type your message...">
+          <button onclick="sendMessage()">Send</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    let elderLat = 28.6139, elderLng = 77.2090;
+    let userMarker, elderMarker;
+
+    function initMap() {
+      const center = { lat: elderLat, lng: elderLng };
+      const map = new google.maps.Map(document.getElementById("map"), {
+        center,
+        zoom: 14,
+        mapId: "LifeSyncMap"
+      });
+
+      elderMarker = new google.maps.Marker({
+        position: center,
+        map,
+        label: "👴",
+        title: "Elder's Location"
+      });
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(pos => {
+          const userLoc = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+          userMarker = new google.maps.Marker({
+            position: userLoc,
+            map,
+            label: "🧑",
+            title: "Your Location"
+          });
+
+          const dist = google.maps.geometry.spherical.computeDistanceBetween(
+            new google.maps.LatLng(elderLat, elderLng),
+            new google.maps.LatLng(userLoc.lat, userLoc.lng)
+          );
+          document.getElementById("distance").innerText = `${(dist / 1000).toFixed(2)} km`;
+        });
+      }
+
+      const service = new google.maps.places.PlacesService(map);
+      const request = {
+        location: center,
+        radius: 3000,
+        type: ["hospital"]
+      };
+
+      service.nearbySearch(request, (results, status) => {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          results.forEach(place => {
+            new google.maps.Marker({
+              position: place.geometry.location,
+              map,
+              title: place.name,
+              icon: "http://maps.google.com/mapfiles/ms/icons/hospitals.png"
+            });
+          });
+        }
+      });
+    }
+
+    function sendMessage() {
+      const input = document.getElementById("chatInput");
+      if (input.value.trim()) {
+        const msg = document.createElement("p");
+        msg.textContent = "👤: " + input.value;
+        document.getElementById("messages").appendChild(msg);
+        input.value = "";
+        document.getElementById("chatBox").scrollTop = document.getElementById("chatBox").scrollHeight;
+      }
+    }
+
+    window.initMap = initMap;
+  </script>
+</body>
+</html>

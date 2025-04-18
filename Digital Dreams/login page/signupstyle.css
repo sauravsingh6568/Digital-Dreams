@@ -8,11 +8,47 @@ body {
   height: 100vh;
 }
 
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
+
+nav .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 0;
+}
+
+nav ul li {
+  cursor: pointer;
+  transition: color 0.3s ease;
+  color: white;
+}
+
+nav ul li:hover {
+  color: #ffd700;
+}
+
 .auth-container {
   background: #fff;
   border-radius: 25px;
   padding: 40px;
-  width: 320px;
+  width: 455px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
