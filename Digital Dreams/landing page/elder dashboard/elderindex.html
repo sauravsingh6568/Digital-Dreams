@@ -29,6 +29,10 @@
       position: relative;
     }
 
+    .sidebar a {
+      text-decoration: none; /* removes underline from LifeSync */
+    }
+
     .sidebar .nav-link {
       color: #333;
       font-weight: 500;
@@ -127,7 +131,9 @@
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
       <span class="close-btn" onclick="toggleSidebar()">&times;</span>
-      <a href="/Digital Dreams/landing page/land.html"><h4 class="fw-bold text-primary">LifeSync</h4></a>
+      <a href="/Digital Dreams/landing page/land.html">
+        <h4 class="fw-bold text-primary">LifeSync</h4>
+      </a>
       <nav class="nav flex-column">
         <a class="nav-link active" onclick="loadPage('home.html', this)"><i class="bi bi-house-door"></i> Dashboard</a>
         <a class="nav-link" onclick="loadPage('vitals.html', this)"><i class="bi bi-heart-pulse"></i> Vitals</a>
@@ -138,7 +144,7 @@
 
     <!-- Main Content Area -->
     <div class="main-content">
-      <!-- Topbar with Name & DP -->
+      <!-- Topbar with Menu Toggle, Name & DP -->
       <div class="topbar">
         <i class="bi bi-list menu-toggle" onclick="toggleSidebar()"></i>
         <span>Hello, Rudra</span>
@@ -154,11 +160,13 @@
     function loadPage(page, element) {
       document.getElementById("contentFrame").src = page;
 
+      // Remove active from all, add to selected
       document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.remove('active');
       });
       element.classList.add('active');
 
+      // Close sidebar on mobile after selecting
       if (window.innerWidth <= 768) {
         document.getElementById('sidebar').classList.remove('active');
       }
