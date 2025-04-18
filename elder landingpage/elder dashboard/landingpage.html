@@ -159,40 +159,51 @@
     .btn.w-100:hover {
       background-color: #9500ff;
     }
-
     .feature-box {
-      background: #ffffff;
-      border-radius: 16px;
-      padding: 30px;
-      box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-    }
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  height: 100%; /* Ensures all cards are the same height */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers the icon horizontally */
+  justify-content: space-between; /* Ensures proper spacing between elements */
+}
 
-    .feature-box:hover {
-      box-shadow: 0 15px 60px rgba(0, 0, 0, 0.6);
-      transform: translateY(-8px);
-    }
+.feature-box:hover {
+  box-shadow: 0 15px 60px rgba(0, 0, 0, 0.2);
+  transform: translateY(-8px);
+}
 
-    .feature-box .icon i {
-      color: #6c5ce7;
-    }
+.feature-box .icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  background: #f9f6ff;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
 
-    .video-img {
-      width: 50px;
-    }
+.feature-box h5 {
+  font-weight: bold;
+  margin-top: 15px;
+  color: #2d3436;
+}
 
-    .feature-box h5 {
-      font-weight: bold;
-      margin-top: 15px;
-      color: #2d3436;
-    }
+.feature-box p {
+  font-size: 0.95rem;
+  color: #636e72;
+  margin-top: 10px;
+}
 
-    .feature-box p {
-      font-size: 0.95rem;
-      color: #636e72;
-      margin-top: 10px;
-    }
-
+.video-img {
+  width: 40px;
+  height: 40px;
+}
     /* Map Section */
     #map {
       height: 400px;
@@ -323,84 +334,76 @@
       </div>
     </div>
   </section>
-  <!-- Features Section -->
-<!-- Modern Features Section (new one with emojis) -->
-<section id="features" class="py-5 text-center">
+  <section id="features" class="py-5 text-center">
     <h2 class="fw-bold mb-4">Features</h2>
     <div class="container">
-        <div class="row g-4 justify-content-center">
-            <div class="col-md-3">
-                <div class="feature-box p-4 shadow-sm">
-                    <div class="icon mb-3">
-                        <img class="video-img" src="/Digital Dreams/landing page/assets/video-solid.svg" alt="video-calling" />
-                    </div>
-                    <h5>Video Calling</h5>
-                    <p>Easy-to-use video call feature to contrast with caregivers & family via Jitsi.</p>
-                </div>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="feature-box p-4 shadow-sm">
+            <div class="icon mb-3">
+              <img class="video-img" src="/Digital Dreams/landing page/assets/video-solid.svg" alt="Video Calling" />
             </div>
-            <div class="col-md-3">
-                <div class="feature-box p-4 shadow-sm">
-                    <div class="icon mb-3">
-                        <img class="video-img" src="/Digital Dreams/landing page/assets/sos.svg" alt="video-calling" />
-                    </div>
-                    <h5>Emergency SOS</h5>
-                    <p>One Tap emergency alert system thanistanty notifies caregivers.</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="feature-box p-4 shadow-sm">
-                    <div class="icon mb-3">
-                        <img class="video-img" src="/Digital Dreams/landing page/assets/heart-pulse-solid.svg"
-                            alt="video-calling" />
-                    </div>
-                    <h5>Health Monitoring</h5>
-                    <p>Integrate vitals like heart rate & oxygen using IoT for real-time tracking.</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <a href="/Digital Dreams/landing page/medical emergence/medical emergence.html" style="text-decoration: none;">
-                    <div class="feature-box p-4 shadow-sm">
-                        <div class="icon mb-3">
-                            <img class="video-img" src="/Digital Dreams/landing page/assets/kit-medical-solid.svg"
-                                alt="video-calling" />
-                        </div>
-                        <h5>Medical emergencies </h5>
-                        <p>Integrate vitals like heart rate & oxygen using IoT for real-time tracking.</p>
-                    </div>
-            </div>
-            </a>
-            <div class="col-md-3">
-                <div class="feature-box p-4 shadow-sm">
-                    <div class="icon mb-3">
-                        <img class="video-img" src="/Digital Dreams/landing page/assets/user-doctor-solid.svg" alt="Doctor" />
-                    </div>
-                    <h5>Doctor/medicine </h5>
-                    <p>Integrate vitals like heart rate & oxygen using IoT for real-time tracking.</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="feature-box p-4 shadow-sm">
-                    <div class="icon mb-3">
-                        <img class="video-img" src="/Digital Dreams/landing page/assets/government-building.png"
-                            alt="Government" />
-                    </div>
-                    <h5>Government Schemes/NGOs </h5>
-                    <p>Integrate vitals like heart rate & oxygen using IoT for real-time tracking.</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="feature-box p-4 shadow-sm">
-                    <div class="icon mb-3">
-                        <img class="video-img" src="/Digital Dreams/landing page/assets/dial.png" alt="Mood-Detector" />
-                    </div>
-                    <h5>Mood-Detector </h5>
-                    <p>Integrate vitals like heart rate & oxygen using IoT for real-time tracking.</p>
-                </div>
-            </div>
+            <h5>Video Calling</h5>
+            <p>Easy-to-use video call feature to contrast with caregivers & family via Jitsi.</p>
+          </div>
         </div>
+        <div class="col">
+          <div class="feature-box p-4 shadow-sm">
+            <div class="icon mb-3">
+              <img class="video-img" src="/Digital Dreams/landing page/assets/sos.svg" alt="Emergency SOS" />
+            </div>
+            <h5>Emergency SOS</h5>
+            <p>One Tap emergency alert system instantly notifies caregivers.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="feature-box p-4 shadow-sm">
+            <div class="icon mb-3">
+              <img class="video-img" src="/Digital Dreams/landing page/assets/heart-pulse-solid.svg" alt="Health Monitoring" />
+            </div>
+            <h5>Health Monitoring</h5>
+            <p>Integrate vitals like heart rate & oxygen using IoT for real-time tracking.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="feature-box p-4 shadow-sm">
+            <div class="icon mb-3">
+              <img class="video-img" src="/Digital Dreams/landing page/assets/kit-medical-solid.svg" alt="Medical Emergencies" />
+            </div>
+            <h5>Medical Emergencies</h5>
+            <p>Quick access to medical help during emergencies.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="feature-box p-4 shadow-sm">
+            <div class="icon mb-3">
+              <img class="video-img" src="/Digital Dreams/landing page/assets/user-doctor-solid.svg" alt="Doctor/Medicine" />
+            </div>
+            <h5>Doctor/Medicine</h5>
+            <p>Connect with doctors and manage prescriptions easily.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="feature-box p-4 shadow-sm">
+            <div class="icon mb-3">
+              <img class="video-img" src="/Digital Dreams/landing page/assets/government-building.png" alt="Government Schemes" />
+            </div>
+            <h5>Government Schemes/NGOs</h5>
+            <p>Access information about government schemes and NGOs.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="feature-box p-4 shadow-sm">
+            <div class="icon mb-3">
+              <img class="video-img" src="/Digital Dreams/landing page/assets/dial.png" alt="Mood Detector" />
+            </div>
+            <h5>Mood Detector</h5>
+            <p>Analyze emotional well-being using AI-powered tools.</p>
+          </div>
+        </div>
+      </div>
     </div>
-  </section>
-  
+  </section> 
   <!-- Map Section -->
   <section id="map-section" class="py-5">
     <div class="container">
