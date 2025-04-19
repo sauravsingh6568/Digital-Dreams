@@ -1,218 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>LifeSync – Family Vitals</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f8f6ff;
-      color: #363333;
-    }
-
-    .container {
-      display: flex;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    .sidebar {
-      width: 220px;
-      background: #ffffff;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .sidebar h2 {
-      font-size: 22px;
-      font-weight: bold;
-      color: #5a00ff;
-      margin-bottom: 30px;
-    }
-
-    .nav-item {
-      padding: 12px;
-      border-radius: 10px;
-      margin-bottom: 10px;
-      text-decoration: none;
-      color: #333;
-      transition: background 0.2s ease;
-    }
-
-    .nav-item:hover,
-    .nav-item.active {
-      background: #e0d0ff;
-      color: #5a00ff;
-      font-weight: bold;
-    }
-
-    .main {
-      flex: 1;
-      padding: 30px;
-      overflow-y: auto;
-    }
-
-    .header {
-      background: linear-gradient(to right, #8e2de2, #4a00e0);
-      padding: 20px;
-      border-radius: 16px;
-      color: white;
-      font-size: 22px;
-      font-weight: bold;
-      margin-bottom: 30px;
-    }
-
-    .cards {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-bottom: 30px;
-    }
-
-    .card {
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      padding: 20px;
-      flex: 1;
-      min-width: 200px;
-    }
-
-    .card h3 {
-      margin: 0 0 8px;
-      font-size: 16px;
-      color: #5a00ff;
-    }
-
-    .card p {
-      margin: 0;
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    .chart-container {
-      background: white;
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      margin-bottom: 30px;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <aside class="sidebar">
-      <h2>LifeSync</h2>
-      <a href="index.html" class="nav-item">Dashboard</a>
-      <a href="family-vitals.html" class="nav-item active">Vitals</a>
-      <a href="family-mood.html" class="nav-item">Mood</a>
-      <a href="family-sos.html" class="nav-item">SOS</a>
-      <a href="contacts.html" class="nav-item">Contacts</a>
-      <a href="logout.html" class="nav-item">Logout</a>
-    </aside>
-
-    <main class="main">
-      <div class="header">Vitals Overview</div>
-
-      <section class="cards">
-        <div class="card">
-          <h3>Heart Rate</h3>
-          <p>76 bpm</p>
-        </div>
-        <div class="card">
-          <h3>Oxygen Level</h3>
-          <p>98%</p>
-        </div>
-        <div class="card">
-          <h3>Blood Pressure</h3>
-          <p>120/80 mmHg</p>
-        </div>
-      </section>
-
-      <div class="chart-container">
-        <h3>Heart Rate (Last 5 readings)</h3>
-        <canvas id="heartRateChart"></canvas>
-      </div>
-
-      <div class="chart-container">
-        <h3>Oxygen Level (Last 5 readings)</h3>
-        <canvas id="oxygenChart"></canvas>
-      </div>
-
-      <div class="chart-container">
-        <h3>Blood Pressure Trend</h3>
-        <canvas id="bpChart"></canvas>
-      </div>
-    </main>
-  </div>
-
-  <script>
-    new Chart(document.getElementById("heartRateChart"), {
-      type: "line",
-      data: {
-        labels: ["10:00", "10:30", "11:00", "11:30", "12:00"],
-        datasets: [{
-          label: "Heart Rate (bpm)",
-          data: [72, 75, 78, 76, 74],
-          borderColor: "#e74c3c",
-          backgroundColor: "rgba(231, 76, 60, 0.2)",
-          fill: true,
-          tension: 0.4
-        }]
-      },
-      options: {
-        responsive: true
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LifeSync – Family Vitals</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        background-color: #f8f6ff;
+        color: #363333;
       }
-    });
 
-    new Chart(document.getElementById("oxygenChart"), {
-      type: "line",
-      data: {
-        labels: ["10:00", "10:30", "11:00", "11:30", "12:00"],
-        datasets: [{
-          label: "Oxygen (%)",
-          data: [97, 98, 99, 98, 97],
-          borderColor: "#3498db",
-          backgroundColor: "rgba(52, 152, 219, 0.2)",
-          fill: true,
-          tension: 0.4
-        }]
-      },
-      options: {
-        responsive: true
+      .container {
+        display: flex;
+        height: 100vh;
+        overflow: hidden;
       }
-    });
 
-    new Chart(document.getElementById("bpChart"), {
-      type: "bar",
-      data: {
-        labels: ["10:00", "10:30", "11:00", "11:30", "12:00"],
-        datasets: [
-          {
-            label: "Systolic",
-            data: [120, 118, 119, 121, 120],
-            backgroundColor: "#8e44ad"
+      .sidebar {
+        width: 220px;
+        background: #ffffff;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .sidebar h2 {
+        font-size: 22px;
+        font-weight: bold;
+        color: #5a00ff;
+        margin-bottom: 30px;
+      }
+
+      .nav-item {
+        padding: 12px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        text-decoration: none;
+        color: #333;
+        transition: background 0.2s ease;
+      }
+
+      .nav-item:hover,
+      .nav-item.active {
+        background: #e0d0ff;
+        color: #5a00ff;
+        font-weight: bold;
+      }
+
+      .main {
+        flex: 1;
+        padding: 30px;
+        overflow-y: auto;
+      }
+
+      .header {
+        background: linear-gradient(to right, #8e2de2, #4a00e0);
+        padding: 20px;
+        border-radius: 16px;
+        color: white;
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 30px;
+      }
+
+      .cards {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+      }
+
+      .card {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        padding: 20px;
+        flex: 1;
+        min-width: 200px;
+      }
+
+      .card h3 {
+        margin: 0 0 8px;
+        font-size: 16px;
+        color: #5a00ff;
+      }
+
+      .card p {
+        margin: 0;
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .chart-container {
+        background: white;
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        margin-bottom: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <aside class="sidebar">
+        <h2>LifeSync</h2>
+        <a href="index.html" class="nav-item">Dashboard</a>
+        <a href="family-vitals.html" class="nav-item active">Vitals</a>
+        <a href="family-mood.html" class="nav-item">Mood</a>
+        <a href="family-sos.html" class="nav-item">SOS</a>
+        <!-- <a href="contacts.html" class="nav-item">Contacts</a> -->
+        <a href="/index.html" class="nav-item">Logout</a>
+      </aside>
+
+      <main class="main">
+        <div class="header">Vitals Overview</div>
+
+        <section class="cards">
+          <div class="card">
+            <h3>Heart Rate</h3>
+            <p>76 bpm</p>
+          </div>
+          <div class="card">
+            <h3>Oxygen Level</h3>
+            <p>98%</p>
+          </div>
+          <div class="card">
+            <h3>Blood Pressure</h3>
+            <p>120/80 mmHg</p>
+          </div>
+        </section>
+
+        <div class="chart-container">
+          <h3>Heart Rate (Last 5 readings)</h3>
+          <canvas id="heartRateChart"></canvas>
+        </div>
+
+        <div class="chart-container">
+          <h3>Oxygen Level (Last 5 readings)</h3>
+          <canvas id="oxygenChart"></canvas>
+        </div>
+
+        <div class="chart-container">
+          <h3>Blood Pressure Trend</h3>
+          <canvas id="bpChart"></canvas>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      new Chart(document.getElementById("heartRateChart"), {
+        type: "line",
+        data: {
+          labels: ["10:00", "10:30", "11:00", "11:30", "12:00"],
+          datasets: [
+            {
+              label: "Heart Rate (bpm)",
+              data: [72, 75, 78, 76, 74],
+              borderColor: "#e74c3c",
+              backgroundColor: "rgba(231, 76, 60, 0.2)",
+              fill: true,
+              tension: 0.4,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+        },
+      });
+
+      new Chart(document.getElementById("oxygenChart"), {
+        type: "line",
+        data: {
+          labels: ["10:00", "10:30", "11:00", "11:30", "12:00"],
+          datasets: [
+            {
+              label: "Oxygen (%)",
+              data: [97, 98, 99, 98, 97],
+              borderColor: "#3498db",
+              backgroundColor: "rgba(52, 152, 219, 0.2)",
+              fill: true,
+              tension: 0.4,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+        },
+      });
+
+      new Chart(document.getElementById("bpChart"), {
+        type: "bar",
+        data: {
+          labels: ["10:00", "10:30", "11:00", "11:30", "12:00"],
+          datasets: [
+            {
+              label: "Systolic",
+              data: [120, 118, 119, 121, 120],
+              backgroundColor: "#8e44ad",
+            },
+            {
+              label: "Diastolic",
+              data: [80, 79, 78, 80, 81],
+              backgroundColor: "#9b59b6",
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
           },
-          {
-            label: "Diastolic",
-            data: [80, 79, 78, 80, 81],
-            backgroundColor: "#9b59b6"
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
-  </script>
-</body>
+        },
+      });
+    </script>
+  </body>
 </html>

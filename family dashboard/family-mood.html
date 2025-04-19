@@ -1,215 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>LifeSync – Family Mood</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f8f6ff;
-      color: #333;
-    }
-
-    .container {
-      display: flex;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    .sidebar {
-      width: 220px;
-      background: #ffffff;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-    }
-    .sidebar h2 {
-      font-size: 22px;
-      font-weight: bold;
-      color: #5a00ff;
-      margin-bottom: 30px;
-    }
-
-    .nav-item {
-      padding: 12px;
-      border-radius: 10px;
-      margin-bottom: 10px;
-      text-decoration: none;
-      color: #333;
-      transition: background 0.2s ease;
-    }
-
-    .nav-item:hover,
-    .nav-item.active {
-      background: #e0d0ff;
-      color: #5a00ff;
-      font-weight: bold;
-    }
-
-    .main {
-      flex: 1;
-      padding: 30px;
-      overflow-y: auto;
-    }
-
-    .header {
-      background: linear-gradient(to right, #8e2de2, #4a00e0);
-      padding: 20px;
-      border-radius: 16px;
-      color: white;
-      font-size: 22px;
-      font-weight: bold;
-      margin-bottom: 30px;
-    }
-
-    .cards {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-bottom: 30px;
-    }
-
-    .card {
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      padding: 20px;
-      flex: 1;
-      min-width: 200px;
-    }
-
-    .card h3 {
-      margin: 0 0 8px;
-      font-size: 16px;
-      color: #5a00ff;
-    }
-
-    .card p {
-      margin: 0;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    .mood-history {
-      background: white;
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      margin-bottom: 30px;
-    }
-
-    .mood-history ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .mood-history li {
-      padding: 8px 0;
-      border-bottom: 1px solid #eee;
-      font-size: 15px;
-    }
-
-    .chart-container {
-      background: white;
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <aside class="sidebar">
-      <h2>LifeSync</h2>
-      <a href="index.html" class="nav-item">Dashboard</a>
-      <a href="family-vitals.html" class="nav-item">Vitals</a>
-      <a href="family-mood.html" class="nav-item active">Mood</a>
-      <a href="family-sos.html" class="nav-item">SOS</a>
-      <a href="contacts.html" class="nav-item">Contacts</a>
-      <a href="logout.html" class="nav-item">Logout</a>
-    </aside>
-
-    <main class="main">
-      <div class="header">Emotional Check-ins</div>
-
-      <section class="cards">
-        <div class="card">
-          <h3>Today's Mood</h3>
-          <p>😊 Happy</p>
-        </div>
-        <div class="card">
-          <h3>Yesterday</h3>
-          <p>😐 Calm</p>
-        </div>
-        <div class="card">
-          <h3>Last 7 Days</h3>
-          <p>😄😁🙂😐🙁🙂😊</p>
-        </div>
-      </section>
-
-      <section class="mood-history">
-        <h3>Mood History</h3>
-        <ul>
-          <li>10 Apr – 😊 Happy</li>
-          <li>9 Apr – 😐 Calm</li>
-          <li>8 Apr – 🙂 Fine</li>
-          <li>7 Apr – 😞 Sad</li>
-          <li>6 Apr – 😄 Energetic</li>
-        </ul>
-      </section>
-
-      <div class="chart-container">
-        <canvas id="moodChart"></canvas>
-      </div>
-    </main>
-  </div>
-
-  <script>
-    const ctx = document.getElementById("moodChart").getContext("2d");
-    new Chart(ctx, {
-      type: "line",
-      data: {
-        labels: ["6 Apr", "7 Apr", "8 Apr", "9 Apr", "10 Apr"],
-        datasets: [
-          {
-            label: "Mood Level (1-5)",
-            data: [5, 2, 3, 3, 4],
-            borderColor: "#f39c12",
-            backgroundColor: "rgba(243, 156, 18, 0.2)",
-            fill: true,
-            tension: 0.3
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        scales: {
-          y: {
-            min: 1,
-            max: 5,
-            ticks: {
-              stepSize: 1,
-              callback: function (value) {
-                const moodMap = {
-                  1: "😞",
-                  2: "🙁",
-                  3: "😐",
-                  4: "🙂",
-                  5: "😄"
-                };
-                return moodMap[value] || value;
-              }
-            }
-          }
-        },
-        plugins: {
-          legend: { position: "top" }
-        }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LifeSync – Family Mood</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        background-color: #f8f6ff;
+        color: #333;
       }
-    });
-  </script>
-</body>
+
+      .container {
+        display: flex;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .sidebar {
+        width: 220px;
+        background: #ffffff;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+      }
+      .sidebar h2 {
+        font-size: 22px;
+        font-weight: bold;
+        color: #5a00ff;
+        margin-bottom: 30px;
+      }
+
+      .nav-item {
+        padding: 12px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        text-decoration: none;
+        color: #333;
+        transition: background 0.2s ease;
+      }
+
+      .nav-item:hover,
+      .nav-item.active {
+        background: #e0d0ff;
+        color: #5a00ff;
+        font-weight: bold;
+      }
+
+      .main {
+        flex: 1;
+        padding: 30px;
+        overflow-y: auto;
+      }
+
+      .header {
+        background: linear-gradient(to right, #8e2de2, #4a00e0);
+        padding: 20px;
+        border-radius: 16px;
+        color: white;
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 30px;
+      }
+
+      .cards {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+      }
+
+      .card {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        padding: 20px;
+        flex: 1;
+        min-width: 200px;
+      }
+
+      .card h3 {
+        margin: 0 0 8px;
+        font-size: 16px;
+        color: #5a00ff;
+      }
+
+      .card p {
+        margin: 0;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .mood-history {
+        background: white;
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        margin-bottom: 30px;
+      }
+
+      .mood-history ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .mood-history li {
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+        font-size: 15px;
+      }
+
+      .chart-container {
+        background: white;
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <aside class="sidebar">
+        <h2>LifeSync</h2>
+        <a href="index.html" class="nav-item">Dashboard</a>
+        <a href="family-vitals.html" class="nav-item">Vitals</a>
+        <a href="family-mood.html" class="nav-item active">Mood</a>
+        <a href="family-sos.html" class="nav-item">SOS</a>
+        <!-- <a href="contacts.html" class="nav-item">Contacts</a> -->
+        <a href="/index.html" class="nav-item">Logout</a>
+      </aside>
+
+      <main class="main">
+        <div class="header">Emotional Check-ins</div>
+
+        <section class="cards">
+          <div class="card">
+            <h3>Today's Mood</h3>
+            <p>😊 Happy</p>
+          </div>
+          <div class="card">
+            <h3>Yesterday</h3>
+            <p>😐 Calm</p>
+          </div>
+          <div class="card">
+            <h3>Last 7 Days</h3>
+            <p>😄😁🙂😐🙁🙂😊</p>
+          </div>
+        </section>
+
+        <section class="mood-history">
+          <h3>Mood History</h3>
+          <ul>
+            <li>10 Apr – 😊 Happy</li>
+            <li>9 Apr – 😐 Calm</li>
+            <li>8 Apr – 🙂 Fine</li>
+            <li>7 Apr – 😞 Sad</li>
+            <li>6 Apr – 😄 Energetic</li>
+          </ul>
+        </section>
+
+        <div class="chart-container">
+          <canvas id="moodChart"></canvas>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      const ctx = document.getElementById("moodChart").getContext("2d");
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: ["6 Apr", "7 Apr", "8 Apr", "9 Apr", "10 Apr"],
+          datasets: [
+            {
+              label: "Mood Level (1-5)",
+              data: [5, 2, 3, 3, 4],
+              borderColor: "#f39c12",
+              backgroundColor: "rgba(243, 156, 18, 0.2)",
+              fill: true,
+              tension: 0.3,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              min: 1,
+              max: 5,
+              ticks: {
+                stepSize: 1,
+                callback: function (value) {
+                  const moodMap = {
+                    1: "😞",
+                    2: "🙁",
+                    3: "😐",
+                    4: "🙂",
+                    5: "😄",
+                  };
+                  return moodMap[value] || value;
+                },
+              },
+            },
+          },
+          plugins: {
+            legend: { position: "top" },
+          },
+        },
+      });
+    </script>
+  </body>
 </html>

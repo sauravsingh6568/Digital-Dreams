@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
           localStorage.setItem("loggedInUser", email);
 
           window.location.href =
-            "../../elder landingpage/elder dashboard/elderindex.html";
+            "../../elder landingpage/elder dashboard/landingpage.html";
 
           // For debugging, log the redirect URL
           console.log(
