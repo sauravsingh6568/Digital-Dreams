@@ -34,6 +34,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 5%;
+  position: relative;
 }
 
 .navbar-brand {
@@ -67,10 +68,14 @@ body {
 
 /* Hamburger Menu */
 .navbar-toggler {
-  display: none;
+  display: block;
   background: transparent;
   border: none;
   cursor: pointer;
+  position: absolute;
+  right: 20px; /* Aligns the icon to the right */
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .animated-icon {
