@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Under Construction</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f8f8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #ff6f61;
+      animation: blink 1.5s infinite;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #333;
+      margin-top: 10px;
+    }
+
+    .gear {
+      font-size: 4rem;
+      animation: spin 3s linear infinite;
+      color: #888;
+      margin-bottom: 20px;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="gear">⚙</div>
+  <h1>Under Construction</h1>
+  <p>We're working hard to bring you something amazing.<br>Please check back soon!</p>
+
+  <script>
+    // Optional: Dynamic text effect
+    const messages = [
+      "Building something awesome...",
+      "Hang tight, magic is happening!",
+      "Page will be live shortly...",
+      "Loading creativity..."
+    ];
+    let i = 0;
+    setInterval(() => {
+      document.querySelector("p").innerHTML = messages[i % messages.length];
+      i++;
+    }, 3000);
+  </script>
+</body>
+</html>
