@@ -79,11 +79,11 @@ document.addEventListener("DOMContentLoaded", function () {
           window.location.href =
             "../../elder landingpage/elder dashboard/landingpage.html";
 
-          // For debugging, log the redirect URL
-          console.log(
-            "Redirecting to:",
-            "/family%20dashboard/familylandingpage.html"
-          );
+          // // For debugging, log the redirect URL
+          // console.log(
+          //   "Redirecting to:",
+          //   "/family%20dashboard/familylandingpage.html"
+          // );
 
           // Show success message
           const successMsg = document.getElementById("successMessage");
