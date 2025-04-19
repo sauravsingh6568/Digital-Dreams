@@ -9,7 +9,7 @@ body {
   font-family: "Inter", sans-serif;
   line-height: 1.6;
   background: linear-gradient(
-    355deg,
+    85deg,
     #cf328f,
     #524ce7
   ); /* Matches CTA gradient */
@@ -224,6 +224,7 @@ body {
 #about h2 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
+  color: black;
 }
 
 #about p {
