@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const API_URL = "https://digital-dreams-ovk2.onrender.com/auth";
+  const API_URL = "https://digital-dreams-ovk2.onrender.com";
 
+  // LOGIN
   const loginForm = document.getElementById("loginForm");
-
   if (loginForm) {
     loginForm.addEventListener("submit", async function (e) {
       e.preventDefault();
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const password = document.getElementById("password").value;
 
       if (!email || !password) {
-        alert("Please fill in all fields.");
+        alert("Please fill in all fields");
         return;
       }
 
@@ -27,15 +27,59 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (response.ok) {
           localStorage.setItem("loggedInUser", email);
-          document.getElementById("successMessage").style.display = "block";
-          setTimeout(() => {
-            window.location.href = "/life sync app/land.html";
-          }, 1500);
+          // ✅ Match old behavior
+          window.location.href = "/life%20sync%20app/dash.html";
         } else {
           alert(data.error || "Login failed.");
         }
       } catch (err) {
         console.error("Login error:", err);
+        alert("Server error. Try again later.");
+      }
+    });
+  }
+
+  // SIGNUP
+  const signupForm = document.getElementById("signupForm");
+  if (signupForm) {
+    signupForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const fullName = document.getElementById("fullName").value;
+      const dob = document.getElementById("dob").value;
+      const email = document.getElementById("email").value;
+      const mobile = document.getElementById("mobile").value;
+      const password = document.getElementById("password").value;
+
+      if (!fullName || !dob || !email || !mobile || !password) {
+        alert("Please fill in all fields");
+        return;
+      }
+
+      try {
+        const response = await fetch(`${API_URL}/signup/`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            username: email,
+            password,
+            full_name: fullName,
+            dob,
+            mobile,
+          }),
+        });
+
+        const data = await response.json();
+        console.log("Signup response:", response.status, data);
+
+        if (response.ok) {
+          alert("Signup successful! You can now log in.");
+          window.location.href = "login.html";
+        } else {
+          alert(data.error || "Signup failed.");
+        }
+      } catch (err) {
+        console.error("Signup error:", err);
         alert("Server error. Try again later.");
       }
     });
