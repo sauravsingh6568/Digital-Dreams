@@ -8,7 +8,11 @@
 body {
   font-family: "Inter", sans-serif;
   line-height: 1.6;
-  background: linear-gradient(355deg, #cf328f, #524ce7); /* Matches CTA gradient */
+  background: linear-gradient(
+    355deg,
+    #cf328f,
+    #524ce7
+  ); /* Matches CTA gradient */
   color: white;
 }
 
@@ -24,7 +28,7 @@ body {
 
 /* Home and background */
 .home {
-  background: linear-gradient(355deg, #cf328f, #524ce7);
+  /* background: linear-gradient(355deg, #cf328f, #524ce7); */
   color: white;
 }
 
