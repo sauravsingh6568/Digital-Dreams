@@ -75,8 +75,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (response.ok) {
           localStorage.setItem("loggedInUser", email);
-          alert("Login successful!");
-          window.location.href = "/family dashboard/familylandingpage.html";
+
+          window.location.href =
+            "../../family dashboard/familylandingpage.html";
+
+          // For debugging, log the redirect URL
+          console.log(
+            "Redirecting to:",
+            "/family%20dashboard/familylandingpage.html"
+          );
+
+          // Show success message
+          const successMsg = document.getElementById("successMessage");
+          if (successMsg) {
+            successMsg.style.display = "block";
+          }
         } else {
           alert(data.error || "Login failed.");
         }

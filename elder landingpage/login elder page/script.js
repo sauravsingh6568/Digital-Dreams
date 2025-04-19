@@ -1,45 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const API_URL = "https://digital-dreams-ovk2.onrender.com";
+  const API_URL = "https://digital-dreams-ovk2.onrender.com/auth";
 
-  // LOGIN
-  const loginForm = document.getElementById("loginForm");
-  if (loginForm) {
-    loginForm.addEventListener("submit", async function (e) {
-      e.preventDefault();
-
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-
-      if (!email || !password) {
-        alert("Please fill in all fields");
-        return;
-      }
-
-      try {
-        const response = await fetch(`${API_URL}/login/`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ username: email, password }),
-        });
-
-        const data = await response.json();
-        console.log("Login response:", response.status, data);
-
-        if (response.ok) {
-          localStorage.setItem("loggedInUser", email);
-          // ✅ Match old behavior
-          window.location.href = "/life%20sync%20app/dash.html";
-        } else {
-          alert(data.error || "Login failed.");
-        }
-      } catch (err) {
-        console.error("Login error:", err);
-        alert("Server error. Try again later.");
-      }
-    });
-  }
-
-  // SIGNUP
+  // Signup Handler
   const signupForm = document.getElementById("signupForm");
   if (signupForm) {
     signupForm.addEventListener("submit", async function (e) {
@@ -51,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const mobile = document.getElementById("mobile").value;
       const password = document.getElementById("password").value;
 
+      // Validate inputs
       if (!fullName || !dob || !email || !mobile || !password) {
         alert("Please fill in all fields");
         return;
@@ -85,5 +48,57 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Login Handler
+  const loginForm = document.getElementById("loginForm");
+  if (loginForm) {
+    loginForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      // Validate inputs
+      if (!email || !password) {
+        alert("Please fill in all fields");
+        return;
+      }
+
+      try {
+        const response = await fetch(`${API_URL}/login/`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username: email, password }),
+        });
+
+        const data = await response.json();
+        console.log("Login response:", response.status, data);
+
+        if (response.ok) {
+          localStorage.setItem("loggedInUser", email);
+
+          window.location.href = "../../elder dashboard/elderindex.html";
+
+          // For debugging, log the redirect URL
+          console.log(
+            "Redirecting to:",
+            "/family%20dashboard/familylandingpage.html"
+          );
+
+          // Show success message
+          const successMsg = document.getElementById("successMessage");
+          if (successMsg) {
+            successMsg.style.display = "block";
+          }
+        } else {
+          alert(data.error || "Login failed.");
+        }
+      } catch (err) {
+        console.error("Login error:", err);
+        alert("Server error. Try again later.");
+      }
+    });
+  }
+
+  // Debug output
   console.log("Script loaded successfully");
 });
