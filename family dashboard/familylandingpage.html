@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LifeSync – A Smart Companion</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    /* MOBILE VIEW ONLY */
+  @media (max-width: 768px) {
+    .home-content {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .home-content h1::before {
+      content: "A smart companion for your loved ones";
+      display: block;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .home-image {
+      position: relative;
+      margin-top: 10px;
+    }
+
+    .home-image img {
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .dashboard-button {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px 18px;
+      background-color: #6a0dad;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+  }
+</style>
+</head>
+
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #f9f6ff;
+      color: #121530;
+    }
+
+    .navbar {
+      padding: 1rem 2rem;
+      background-color: #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+      color: #6b59ec;
+      font-size: 1.6rem;
+    }
+
+    .nav-link {
+      color: #1b1247;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      transition: color 0.3s ease, background-color 0.3s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus {
+      color: #fff;
+      background-color: #ff6250;
+      border-radius: 8px;
+    }
+
+    .navbar-toggler {
+      border: none;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #df3cc2, #6b59ec, #4a90e2);
+      padding: -3rem 2rem;
+      color: white;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-img {
+      max-width: 100%;
+      position: relative;
+      top: 0px;
+      height: 388px;
+    }
+
+    .btn-primary-custom {
+      background-color: #ff6250;
+      border: none;
+    }
+
+    .btn-secondary-custom {
+      background-color: rgb(219, 210, 210);
+      color: #1b1247;
+      border: 1px solid #ddd;
+    }
+
+    .feature-item {
+      background: linear-gradient(135deg, #ffffff, #f9f6ff);
+      padding: 2rem 1.5rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 100%;
+      text-align: left;
+    }
+
+    .feature-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-item h5 {
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .feature-item p {
+      font-size: 0.95rem;
+      color: #444;
+    }
+
+    .feature-icon {
+      font-size: 1.4rem;
+    }
+
+    .quote {
+      background: #fff;
+      font-style: italic;
+      border-left: 4px solid #ff6250;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      margin-top: 2rem;
+    }
+
+    .cta {
+      background: linear-gradient(355deg, #cf328f, #524ce7);
+      padding: 4rem 2rem;
+    }
+
+    .cta h2 {
+      color: white;
+    }
+
+    .footer {
+      padding: 2rem;
+      background-color: #f9f6ff;
+      font-size: 0.9rem;
+      color: #4f4f4f;
+    }
+
+    .footer a {
+      text-decoration: none;
+      color: inherit;
+      margin-right: 1rem;
+    }
+
+    .footer a:hover {
+      color: #ff6250;
+    }
+
+    .btn.w-100 {
+      background-color: #120ef1;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn.w-100:hover {
+      background-color: #9500ff;
+    }
+    .feature-box {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  height: 100%; /* Ensures all cards are the same height */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers the icon horizontally */
+  justify-content: space-between; /* Ensures proper spacing between elements */
+}
+
+.feature-box:hover {
+  box-shadow: 0 15px 60px rgba(0, 0, 0, 0.2);
+  transform: translateY(-8px);
+}
+
+.feature-box .icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  background: #f9f6ff;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.feature-box h5 {
+  font-weight: bold;
+  margin-top: 15px;
+  color: #2d3436;
+}
+
+.feature-box p {
+  font-size: 0.95rem;
+  color: #636e72;
+  margin-top: 10px;
+}
+
+.video-img {
+  width: 40px;
+  height: 40px;
+}
+    /* Map Section */
+    #map {
+      height: 400px;
+      width: 100%;
+    }
+
+    /* Enhanced button styles */
+    .enhanced-btn {
+      background-color: #0e076b;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 30px;
+      color: #fff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+      display: inline-block;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .enhanced-btn:hover,
+    .enhanced-btn:focus {
+      background-color: #4b1bbc;
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .enhanced-btn:active {
+      background-color: #ff6250;
+      transform: translateY(0);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero .btn-container {
+      display: flex;
+      justify-content: center; /* Centers the button horizontally */
+      align-items: center; /* Centers the button vertically if needed */
+      margin-top: 1rem; /* Adds spacing above the button */
+    }
+  </style>
+</head>
+
+<body>
+
+
+    <!-- Navbar -->
+<nav class="bg-white shadow-md px-4 md:px-8 py-3 flex justify-between items-center sticky top-0 z-50">
+  <!-- Logo Dropdown -->
+  <div class="relative">
+    <button id="logoDropdownBtn" class="flex items-center space-x-2 text-xl font-bold text-gray-800 focus:outline-none">
+      <span>LifeSync</span>
+      <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      </svg>
+    </button>
+
+    <!-- Logo Dropdown Menu -->
+    <div id="logoDropdownMenu" class="hidden absolute left-0 mt-2 w-44 bg-white rounded-xl shadow-lg z-50">
+    </div>
+  </div>
+
+  <!-- Profile Dropdown -->
+  <div class="relative">
+    <button id="dropdownBtn" class="flex items-center space-x-2 focus:outline-none">
+      <img src="/Digital Dreams/landing page/assets/dp.webp" alt="User DP" class="w-10 h-10 rounded-full border-2 border-violet-500">
+      <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </button>
+
+    <!-- Profile Dropdown Menu -->
+    <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-44 bg-white rounded-xl shadow-lg z-50">
+      <a href="/profile" class="block px-4 py-2 text-gray-700 hover:bg-violet-100">Profile</a>
+      <a href="/settings" class="block px-4 py-2 text-gray-700 hover:bg-violet-100">Settings</a>
+      <a href="/logout" class="block px-4 py-2 text-red-600 hover:bg-red-100">Logout</a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Toggle Sidebar Visibility
+  const hideSidebarBtn = document.getElementById('hideSidebarBtn');
+  const sidebar = document.getElementById('sidebar'); // Assuming you have a sidebar element
+
+  hideSidebarBtn.addEventListener('click', () => {
+    if (sidebar) {
+      sidebar.classList.toggle('hidden');
+      hideSidebarBtn.innerHTML = sidebar.classList.contains('hidden')
+        ? '<i class="fas fa-bars"></i>'
+        : '<i class="fas fa-times"></i>';
+    }
+  });
+
+  // Dropdown Menu Logic
+  const dropdownBtn = document.getElementById('dropdownBtn');
+  const dropdownMenu = document.getElementById('dropdownMenu');
+  const logoDropdownBtn = document.getElementById('logoDropdownBtn');
+  const logoDropdownMenu = document.getElementById('logoDropdownMenu');
+
+  dropdownBtn.addEventListener('click', () => {
+    dropdownMenu.classList.toggle('hidden');
+  });
+
+  logoDropdownBtn.addEventListener('click', () => {
+    logoDropdownMenu.classList.toggle('hidden');
+  });
+
+  window.addEventListener('click', (e) => {
+    if (!dropdownBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+      dropdownMenu.classList.add('hidden');
+    }
+    if (!logoDropdownBtn.contains(e.target) && !logoDropdownMenu.contains(e.target)) {
+      logoDropdownMenu.classList.add('hidden');
+    }
+  });
+</script>
+
+    
+  <!-- Hero Section -->
+  <section class="hero text-white">
+    <div class="container">
+      <div class="row align-items-center gy-4">
+        <div class="col-md-6 order-md-1 text-center">
+          <img src="/Digital Dreams/landing page/assets/family.png" alt="Elder with AI" class="hero-img" />
+        </div>
+        <div class="col-md-6 order-md-2 text-center">
+          <h1>A Smart Companion for Your Loved Ones</h1>
+          <p>Real-time care, connection, and comfort — in just one tap.</p>
+          <div class="btn-container">
+            <a href="/family dashboard/familyindex.html" class="btn btn-primary-custom me-3 enhanced-btn">GO TO DASHBOARD</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="features" class="py-5 text-center">
+    <h2 class="fw-bold mb-4">Features</h2>
+    <div class="container">
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="feature-box p-4 shadow-sm">
+            <div class="icon mb-3">
+              <img class="video-img" src="/Digital Dreams/landing page/assets/video-solid.svg" alt="Video Calling" />
+            </div>
+            <h5>Video Calling</h5>
+            <p>Easy-to-use video call feature to contrast with caregivers & family via Jitsi.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="feature-box p-4 shadow-sm">
+            <div class="icon mb-3">
+              <img class="video-img" src="/Digital Dreams/landing page/assets/sos.svg" alt="Emergency SOS" />
+            </div>
+            <h5>Emergency SOS</h5>
+            <p>One Tap emergency alert system instantly notifies caregivers.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="feature-box p-4 shadow-sm">
+            <div class="icon mb-3">
+              <img class="video-img" src="/Digital Dreams/landing page/assets/heart-pulse-solid.svg" alt="Health Monitoring" />
+            </div>
+            <h5>Health Monitoring</h5>
+            <p>Integrate vitals like heart rate & oxygen using IoT for real-time tracking.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="feature-box p-4 shadow-sm">
+            <div class="icon mb-3">
+              <img class="video-img" src="/Digital Dreams/landing page/assets/kit-medical-solid.svg" alt="Medical Emergencies" />
+            </div>
+            <h5>Medical Emergencies</h5>
+            <p>Quick access to medical help during emergencies.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="feature-box p-4 shadow-sm">
+            <div class="icon mb-3">
+              <img class="video-img" src="/Digital Dreams/landing page/assets/user-doctor-solid.svg" alt="Doctor/Medicine" />
+            </div>
+            <h5>Doctor/Medicine</h5>
+            <p>Connect with doctors and manage prescriptions easily.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="feature-box p-4 shadow-sm">
+            <div class="icon mb-3">
+              <img class="video-img" src="/Digital Dreams/landing page/assets/government-building.png" alt="Government Schemes" />
+            </div>
+            <h5>Government Schemes/NGOs</h5>
+            <p>Access information about government schemes and NGOs.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="feature-box p-4 shadow-sm">
+            <div class="icon mb-5">
+              <img class="video-img" src="/Digital Dreams/landing page/assets/dial.png" alt="Mood Detector" />
+            </div>
+            <h5>Mood Detector</h5>
+            <p>Analyze emotional well-being using AI-powered tools.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> 
+  <!-- Map Section -->
+  <section id="map-section" class="py-5">
+    <div class="container">
+      <h2 class="fw-bold mb-4 text-center">Track Your Loved One's Location</h2>
+      <div id="map"></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer text-center">
+    <p>&copy; 2025 LifeSync. All rights reserved.</p>
+    
+  </footer>
+<style>
+  .footer{
+    background-color: black;
+    color: white;
+  }
+</style>
+  <!-- Google Maps API -->
+  <script>
+    function initMap() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          const userLocation = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+    
+          const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 14,
+            center: userLocation
+          });
+    
+          const marker = new google.maps.Marker({
+            position: userLocation,
+            map: map
+          });
+        }, function () {
+          alert("Geolocation failed or is not supported by this browser.");
+        });
+      } else {
+        alert("Geolocation is not supported by this browser.");
+      }
+    }
+      </script>
+      <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Dropdown Elements
+    const dropdownBtn = document.getElementById('dropdownBtn');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    const logoDropdownBtn = document.getElementById('logoDropdownBtn');
+    const logoDropdownMenu = document.getElementById('logoDropdownMenu');
+
+    // Toggle dropdown menus
+    dropdownBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdownMenu.classList.toggle('hidden');
+    });
+
+    logoDropdownBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      logoDropdownMenu.classList.toggle('hidden');
+    });
+
+    // Close dropdowns on outside click
+    window.addEventListener('click', (e) => {
+      if (!dropdownBtn.contains(e.target)) {
+        dropdownMenu.classList.add('hidden');
+      }
+      if (!logoDropdownBtn.contains(e.target)) {
+        logoDropdownMenu.classList.add('hidden');
+      }
+    });
+  });
+</script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbjmy23jpyAil7JBpIyDcfHJHRbOpGfQQ&callback=initMap"
+    async defer></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
